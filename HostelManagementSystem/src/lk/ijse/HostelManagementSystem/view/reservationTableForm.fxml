@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="context" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HostelManagementSystem.controller.ReservationTableFormController">
+   <children>
+      <ImageView fitHeight="497.0" fitWidth="899.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/colorful-abstract-textured-background-design.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="57.0" opacity="0.43" stroke="#bcb8b8" strokeType="INSIDE" strokeWidth="2.0" width="901.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="840.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="49.0" />
+      <ImageView fx:id="homeBtn" fitHeight="47.0" fitWidth="43.0" layoutX="843.0" layoutY="3.0" onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assert/home-page.png" />
+         </image>
+      </ImageView>
+      <Text fill="#400303" fontSmoothingType="LCD" layoutX="90.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Reservations">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="4.0" layoutY="3.0" stroke="#6a7c90" strokeType="INSIDE" strokeWidth="3.0" width="49.0" />
+      <ImageView fx:id="backBtn" fitHeight="47.0" fitWidth="43.0" layoutX="7.0" layoutY="4.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assert/icons8-undo-48.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="resTable" layoutX="14.0" layoutY="65.0" prefHeight="352.0" prefWidth="872.0">
+        <columns>
+          <TableColumn fx:id="resId" prefWidth="183.3333282470703" text="Reservation ID" />
+          <TableColumn fx:id="resDate" prefWidth="165.33331298828125" text="Date" />
+            <TableColumn fx:id="studentId" prefWidth="178.66668701171875" text="Student Id" />
+            <TableColumn fx:id="roomId" prefWidth="196.0" text="Room Id" />
+            <TableColumn fx:id="status" prefWidth="144.0" text="Status" />
+        </columns>
+      </TableView>
+      <Text layoutX="91.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Reservation :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="selectedLbl" layoutX="307.0" layoutY="438.0" prefHeight="37.0" prefWidth="155.0" text="None">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="646.0" layoutY="439.0" onAction="#deleteRes" prefHeight="52.0" prefWidth="240.0" style="-fx-background-color: darkred" text="Delete Reservation" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

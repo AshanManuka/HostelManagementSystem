@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="context" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HostelManagementSystem.controller.ManageRoomFormController">
+   <children>
+      <ImageView fitHeight="499.0" fitWidth="900.0" layoutY="1.0" opacity="0.42" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/171.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="374.0" layoutX="13.0" layoutY="71.0" opacity="0.49" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="380.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="57.0" layoutX="-1.0" layoutY="4.0" opacity="0.43" stroke="#bcb8b8" strokeType="INSIDE" strokeWidth="2.0" width="901.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="839.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="49.0" />
+      <ImageView fx:id="homeBtn" fitHeight="47.0" fitWidth="43.0" layoutX="842.0" layoutY="7.0" onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assert/home-page.png" />
+         </image>
+      </ImageView>
+      <Text fill="#400303" fontSmoothingType="LCD" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Rooms">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="28.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Room :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="roomIdBox" layoutX="151.0" layoutY="87.0" prefHeight="35.0" prefWidth="173.0" />
+      <Text fx:id="idText" layoutX="29.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="typeText" layoutX="24.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="keyMoneyText" layoutX="29.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="qtyText" layoutX="31.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="roomId" focusColor="#061540" layoutX="149.0" layoutY="158.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="keyMoney" focusColor="#061540" layoutX="150.0" layoutY="294.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="qty" focusColor="#061540" layoutX="149.0" layoutY="362.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="536.0" layoutY="202.0" onAction="#addRoom" prefHeight="52.0" prefWidth="240.0" style="-fx-background-color: #0a3d62" text="Add Room" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="536.0" layoutY="271.0" onAction="#updateRoom" prefHeight="52.0" prefWidth="240.0" style="-fx-background-color: #20bf6b" text="Update Room" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="536.0" layoutY="348.0" onAction="#deleteRoom" prefHeight="52.0" prefWidth="240.0" style="-fx-background-color: darkred" text="Delete Room" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="535.0" layoutY="136.0" onAction="#clearData" prefHeight="52.0" prefWidth="240.0" style="-fx-background-color: #222f3e" text="Clear Fields" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="roomTypeBox" layoutX="151.0" layoutY="218.0" prefHeight="35.0" prefWidth="173.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="halfContext" prefHeight="374.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HostelManagementSystem.controller.DashboardFormController">
+   <children>
+      <ImageView fitHeight="361.0" fitWidth="900.0" layoutY="4.0" opacity="0.68" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/colorful-abstract-textured-background-design.jpg" />
+         </image></ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="1.0" opacity="0.52" stroke="#d7c6c6" strokeType="INSIDE" width="899.0" />
+      <Label fx:id="date" layoutX="757.0" layoutY="9.0" prefHeight="34.0" prefWidth="134.0" text="DD-MM-YYYY">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="loggedUser" layoutX="104.0" layoutY="9.0" prefHeight="32.0" prefWidth="146.0" text="UserName">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Text fontSmoothingType="LCD" layoutX="6.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome : ">
+         <font>
+            <Font name="Arial Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#680505" fontSmoothingType="LCD" layoutX="302.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Dashboard">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="148.0" layoutX="56.0" layoutY="114.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="153.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="148.0" layoutX="265.0" layoutY="114.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="153.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="148.0" layoutX="478.0" layoutY="115.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="153.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="148.0" layoutX="687.0" layoutY="116.0" opacity="0.65" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" width="153.0" />
+      <ImageView fx:id="newReservationBtn" fitHeight="134.0" fitWidth="137.0" layoutX="65.0" layoutY="120.0" onMouseClicked="#createReservation" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/add%20(1).png" />
+         </image></ImageView>
+      <ImageView fx:id="studentBtn" fitHeight="136.0" fitWidth="139.0" layoutX="271.0" layoutY="120.0" onMouseClicked="#manageStudent" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/social-group%20-%20Copy.png" />
+         </image></ImageView>
+      <ImageView fx:id="roomBtn" fitHeight="136.0" fitWidth="139.0" layoutX="485.0" layoutY="120.0" onMouseClicked="#manageRooms" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/hotel.png" />
+         </image></ImageView>
+      <ImageView fx:id="userBtn" fitHeight="136.0" fitWidth="139.0" layoutX="694.0" layoutY="121.0" onMouseClicked="#manageUser" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/50426.jpg" />
+         </image></ImageView>
+      <Text fill="#021740" fontSmoothingType="LCD" layoutX="83.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#021740" fontSmoothingType="LCD" layoutX="312.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#021740" fontSmoothingType="LCD" layoutX="531.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#021740" fontSmoothingType="LCD" layoutX="746.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="logOutBtn" layoutX="350.0" layoutY="323.0" onAction="#logOut" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: darkred" text="Log Out" textFill="#e8dcdc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="context" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HostelManagementSystem.controller.ManageUserFormController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="900.0" layoutX="-1.0" layoutY="-1.0" opacity="0.51" pickOnBounds="true">
+         <image>
+            <Image url="@../Assert/5312964.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="386.0" layoutX="84.0" layoutY="97.0" opacity="0.52" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="393.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="57.0" opacity="0.43" stroke="#bcb8b8" strokeType="INSIDE" strokeWidth="2.0" width="901.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="840.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="49.0" />
+      <ImageView fx:id="homeBtn" fitHeight="47.0" fitWidth="43.0" layoutX="843.0" layoutY="3.0" onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assert/home-page.png" />
+         </image>
+      </ImageView>
+      <Text fill="#400303" fontSmoothingType="LCD" layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Users">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="idText" layoutX="121.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Id :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="userId" focusColor="#061540" layoutX="239.0" layoutY="98.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="597.0" layoutY="324.0" onAction="#updateUser" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #20bf6b" text="Update My Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="597.0" layoutY="403.0" onAction="#deleteUser" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: darkred" text="Delete My Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Text fx:id="nameText" layoutX="121.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User's Name :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="userName" focusColor="#061540" layoutX="239.0" layoutY="150.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Text fx:id="addressText" layoutX="121.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="userAddress" focusColor="#061540" layoutX="239.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Text fx:id="contactText" layoutX="122.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="userContact" focusColor="#061540" layoutX="240.0" layoutY="247.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Text fx:id="userNameText" layoutX="112.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="uName" focusColor="#061540" layoutX="222.0" layoutY="327.0" prefHeight="31.0" prefWidth="205.0" unFocusColor="#070632">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Text fx:id="passwordText1" layoutX="111.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="passwordText2" layoutX="119.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comfirm :">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Text>
+      <JFXPasswordField fx:id="uPassword" layoutX="224.0" layoutY="379.0" prefHeight="25.0" prefWidth="204.0" />
+      <JFXPasswordField fx:id="comfirmPassword" layoutX="224.0" layoutY="428.0" prefHeight="25.0" prefWidth="204.0" />
+      <Separator layoutX="80.0" layoutY="311.0" prefHeight="4.0" prefWidth="373.0" />
+   </children>
+</AnchorPane>
