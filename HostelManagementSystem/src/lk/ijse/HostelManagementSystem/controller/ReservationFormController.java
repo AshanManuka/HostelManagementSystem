@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
@@ -16,8 +17,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class ReservationFormController {
+public class ReservationFormController implements Initializable {
     public AnchorPane context;
     public ImageView homeBtn;
     public Text stIdTxt;
@@ -44,7 +49,15 @@ public class ReservationFormController {
     public JFXButton checkRoomBtn;
     public JFXRadioButton payLater;
     public JFXButton checkAvailable;
+    String gender;
+    String status;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    // load room id to combo Box
+    }
+
+    // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("../view/dashboardForm.fxml"));
         Stage stage1 = new Stage();
@@ -55,19 +68,83 @@ public class ReservationFormController {
         stage2.close();
     }
 
+    // Navigation
     public void checkRooms(ActionEvent actionEvent) throws IOException {
         context.getChildren().clear();
         Parent parent = FXMLLoader.load(getClass().getResource("../view/reservationTableForm.fxml"));
         context.getChildren().add(parent);
     }
 
-    public void comfirmReservation(ActionEvent actionEvent) {
-        System.out.println("confirm booking");
-    }
-
+    // Navigation
     public void checkAvailableRooms(ActionEvent actionEvent) throws IOException {
         context.getChildren().clear();
         Parent parent = FXMLLoader.load(getClass().getResource("../view/availableRoomForm.fxml"));
         context.getChildren().add(parent);
+    }
+
+    public void comfirmReservation(ActionEvent actionEvent) {
+        addStudent();
+    }
+
+    private void addStudent() {
+        String sId = studentId.getText();
+        String sName = studentName.getText();
+        String sAddress = studentAddress.getText();
+        String sContact = studentContact.getText();
+        String dob = String.valueOf(DatePicker.getValue());
+        // grab gender
+        // add student
+
+        selectRoom(sId);
+
+
+    }
+
+    private void selectRoom(String sId) {
+     String resId = generateResId();
+     String resDate = today();
+     //grab sId
+     String rmId = roomId.getText();
+     // grab status
+
+
+     // add to reservation table
+     // decrease one room from room qty
+
+    }
+
+    private String today() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dte = dtf.format(now);
+        return dte;
+    }
+
+    private String generateResId() {
+    // generate reservation id
+        return null;
+    }
+
+
+    public void genderAction(ActionEvent actionEvent) {
+        if (maleBtn.isSelected()){
+            gender = "Male";
+            femaleBtn.setSelected(false);
+        }
+        if (femaleBtn.isSelected()){
+            gender = "Female";
+            maleBtn.setSelected(false);
+        }
+    }
+
+    public void payAction(ActionEvent actionEvent) {
+        if (payNow.isSelected()){
+            status = "Key Money is Done";
+            payLater.setSelected(false);
+        }
+        if (payLater.isSelected()){
+            status = "Key Money is not Payed";
+            payNow.setSelected(false);
+        }
     }
 }

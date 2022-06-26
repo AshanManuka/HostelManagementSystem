@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -11,10 +12,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.dto.StudentDto;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ManageRoomFormController {
+public class ManageRoomFormController implements Initializable {
     public AnchorPane context;
     public ImageView homeBtn;
     public JFXComboBox roomIdBox;
@@ -27,6 +31,12 @@ public class ManageRoomFormController {
     public JFXTextField roomType;
     public JFXTextField qty;
     public JFXComboBox roomTypeBox;
+    // create dependency Injection
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // set Room Ids to combo box
+    }
 
     // navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
@@ -41,19 +51,38 @@ public class ManageRoomFormController {
 
     
     public void addRoom(ActionEvent actionEvent) {
-        System.out.println("add room function");
+       String methName = "add";
     }
 
     public void updateRoom(ActionEvent actionEvent) {
-        System.out.println("update room function");
+        String methName = "update";
     }
 
     public void deleteRoom(ActionEvent actionEvent) {
-        System.out.println("Delete room function");
+        // set Dependency injection with roomBo and continue delete room
+    }
+
+
+    public void addAndUpdate(String methName){
+
+        String roomTypeId = roomId.getText();
+        String rType = roomType.getText();
+        String kMoney = keyMoney.getText();
+        int qt = Integer.parseInt(qty.getText());
+
+        if (methName.equals("add")){
+            // set Dependency injection with roomBo and continue adding room
+        }else if(methName.equals("update")){
+            // set Dependency injection with roomBo and continue update room
+        }
     }
 
     public void clearData(ActionEvent actionEvent) {
-        System.out.println("clear data");
+        roomId.clear();
+        roomType.clear();
+        keyMoney.clear();
+        qty.clear();
     }
+
 
 }

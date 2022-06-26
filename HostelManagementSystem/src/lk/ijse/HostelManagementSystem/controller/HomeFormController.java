@@ -17,6 +17,7 @@ public class HomeFormController {
     public JFXPasswordField password;
     public JFXButton loginBtl;
     public JFXButton cancelBtn;
+    public static String loggedUser;
 
     //Check database & do login
     public void userLogin(ActionEvent actionEvent) throws IOException {
@@ -38,4 +39,10 @@ public class HomeFormController {
     public void cancelLogin(ActionEvent actionEvent) {
         System.out.println("Cancel function");
     }
+
+    public void searchUser(){
+        //  search user's name from userName
+        // set loggedUser by the result
+    }
+
 }

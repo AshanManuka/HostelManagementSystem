@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HostelManagementSystem/src/lk/ijse/HostelManagementSystem/libs/jfoenix-8.0.8 - Copy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/HostelManagementSystem/src/lk/ijse/HostelManagementSystem/libs/mysql-connector-java-8.0.22 - Copy.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

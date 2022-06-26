@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -32,6 +33,7 @@ public class ManageUserFormController {
     public JFXPasswordField uPassword;
     public JFXPasswordField comfirmPassword;
 
+    // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("../view/dashboardForm.fxml"));
         Stage stage1 = new Stage();
@@ -42,11 +44,32 @@ public class ManageUserFormController {
         stage2.close();
     }
 
+
     public void updateUser(ActionEvent actionEvent) {
-        System.out.println("update user");
+        String p1 = uPassword.getText();
+        String p2 = comfirmPassword.getText();
+
+        if (p2.equals(p1)){
+            update();
+        }else{
+        // Show alert about passwords are not match
+        }
+    }
+
+    private void update() {
+        String uId = userId.getText();
+        String Name = userName.getText();
+        String uAddress = userAddress.getText();
+        int uContact = Integer.parseInt(userContact.getText());
+        String usName = uName.getText();
+        String newPassword = comfirmPassword.getText();
+
+        // update function
+
     }
 
     public void deleteUser(ActionEvent actionEvent) {
-        System.out.println("delete user");
+        String uId = userId.getText();
+        // delete function
     }
 }

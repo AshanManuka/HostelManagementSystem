@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
@@ -15,8 +16,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ManageStudentFormController {
+public class ManageStudentFormController implements Initializable {
     public AnchorPane context;
     public ImageView homeBtn;
     public JFXComboBox studentIdBox;
@@ -33,7 +36,17 @@ public class ManageStudentFormController {
     public JFXRadioButton maleBtn;
     public JFXRadioButton femaleBtn;
     public javafx.scene.control.DatePicker DatePicker;
+    public JFXTextField dobField;
+    public JFXTextField genderField;
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+    }
+
+    // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("../view/dashboardForm.fxml"));
         Stage stage1 = new Stage();
@@ -44,19 +57,30 @@ public class ManageStudentFormController {
         stage2.close();
     }
 
-    public void addStudent(ActionEvent actionEvent) {
-        System.out.println("add student");
-    }
 
     public void updateStudent(ActionEvent actionEvent) {
-        System.out.println("update student");
+        String sId = studentId.getText();
+        String sName = studentName.getText();
+        String sAddress = studentAddress.getText();
+        String sContact = studentContact.getText();
+        String sDob = dobField.getText();
+        String gender = genderField.getText();
+        // call studentBo using dependency injection
     }
 
     public void deleteStudent(ActionEvent actionEvent) {
-        System.out.println("delete student");
+        String sId = studentId.getText();
+
+        // call studentBo using dependency injection
     }
 
     public void clearData(ActionEvent actionEvent) {
-        System.out.println("clear");
+        studentId.clear();
+        studentName.clear();
+        studentAddress.clear();
+        studentContact.clear();
+        dobField.clear();
+        genderField.clear();
     }
+
 }
