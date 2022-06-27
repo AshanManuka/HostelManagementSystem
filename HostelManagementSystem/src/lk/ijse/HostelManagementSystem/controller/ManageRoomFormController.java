@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
 
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class ManageRoomFormController implements Initializable {
     public JFXTextField roomType;
     public JFXTextField qty;
     public JFXComboBox roomTypeBox;
-    // create dependency Injection
+    private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

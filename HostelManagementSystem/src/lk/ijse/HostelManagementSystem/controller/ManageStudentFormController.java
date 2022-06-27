@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.StudentBo;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +40,7 @@ public class ManageStudentFormController implements Initializable {
     public javafx.scene.control.DatePicker DatePicker;
     public JFXTextField dobField;
     public JFXTextField genderField;
-
+    private StudentBo studentBo = (StudentBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

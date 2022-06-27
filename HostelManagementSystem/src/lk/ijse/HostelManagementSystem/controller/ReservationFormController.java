@@ -15,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
+import lk.ijse.HostelManagementSystem.bo.custom.StudentBo;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +52,8 @@ public class ReservationFormController implements Initializable {
     public JFXButton checkRoomBtn;
     public JFXRadioButton payLater;
     public JFXButton checkAvailable;
+    private StudentBo studentBo = (StudentBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
+    private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
     String gender;
     String status;
 

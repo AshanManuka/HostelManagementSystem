@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
 import lk.ijse.HostelManagementSystem.dto.RoomDto;
 
 import java.io.IOException;
@@ -26,6 +28,7 @@ public class AvailableRoomFormController implements Initializable {
     public TableColumn qty;
     public ImageView homeBtn;
     public ImageView backBtn;
+    private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

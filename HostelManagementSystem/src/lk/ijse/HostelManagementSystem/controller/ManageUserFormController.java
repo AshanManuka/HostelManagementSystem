@@ -12,6 +12,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.StudentBo;
+import lk.ijse.HostelManagementSystem.bo.custom.UserBo;
 
 import java.io.IOException;
 
@@ -32,6 +35,7 @@ public class ManageUserFormController {
     public Text passwordText2;
     public JFXPasswordField uPassword;
     public JFXPasswordField comfirmPassword;
+    private UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {

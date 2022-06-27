@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import lk.ijse.HostelManagementSystem.bo.BOFactory;
+import lk.ijse.HostelManagementSystem.bo.custom.UserBo;
 
 import java.io.IOException;
 
@@ -17,6 +19,7 @@ public class HomeFormController {
     public JFXPasswordField password;
     public JFXButton loginBtl;
     public JFXButton cancelBtn;
+    private UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
     public static String loggedUser;
 
     //Check database & do login
