@@ -46,7 +46,7 @@ public class ReservationTableFormController implements Initializable {
 
                if (newValue != null) {
                 selectedLbl.setText(newValue.getReservationId());
-                selectedSId = newValue.getStudentId();
+               // selectedSId = newValue.getStudentId();
             }
         });
 

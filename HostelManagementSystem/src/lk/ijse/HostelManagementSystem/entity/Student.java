@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class Student {
     private String dob;
     private String gender;
 
+//    private List<Room> roomList;
 
 
 }

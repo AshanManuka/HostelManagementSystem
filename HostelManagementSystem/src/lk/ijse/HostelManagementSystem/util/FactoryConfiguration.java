@@ -13,10 +13,9 @@ public class FactoryConfiguration {
     private SessionFactory sessionFactory;
 
     private FactoryConfiguration() {
-        Configuration configuration = new Configuration().configure("/lk/ijse/hibernate/resources/hibernate.cfg.xml")
+        Configuration configuration = new Configuration()
                 .addAnnotatedClass(Student.class)
                 .addAnnotatedClass(Room.class);
-
         sessionFactory = configuration.buildSessionFactory();
     }
     public static FactoryConfiguration getInstance() {

@@ -14,7 +14,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.HostelManagementSystem.bo.BOFactory;
 import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
+import lk.ijse.HostelManagementSystem.dto.RoomDto;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
+import lk.ijse.HostelManagementSystem.entity.Room;
+import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +39,9 @@ public class ManageRoomFormController implements Initializable {
     public JFXTextField qty;
     public JFXComboBox roomTypeBox;
     private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
+    private Session session;
+    private Transaction transaction;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +62,7 @@ public class ManageRoomFormController implements Initializable {
     
     public void addRoom(ActionEvent actionEvent) {
        String methName = "add";
+       addAndUpdate(methName);
     }
 
     public void updateRoom(ActionEvent actionEvent) {
@@ -73,7 +82,14 @@ public class ManageRoomFormController implements Initializable {
         int qt = Integer.parseInt(qty.getText());
 
         if (methName.equals("add")){
+            Room r = new Room(roomTypeId,rType,kMoney,qt);
             // set Dependency injection with roomBo and continue adding room
+            session = FactoryConfiguration.getInstance().getSession();
+            transaction = session.beginTransaction();
+            session.save(r);
+            transaction.commit();
+            session.close();
+
         }else if(methName.equals("update")){
             // set Dependency injection with roomBo and continue update room
         }
