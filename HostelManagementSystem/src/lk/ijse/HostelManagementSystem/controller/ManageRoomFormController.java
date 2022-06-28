@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +24,7 @@ import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ManageRoomFormController implements Initializable {
@@ -39,13 +41,13 @@ public class ManageRoomFormController implements Initializable {
     public JFXTextField qty;
     public JFXComboBox roomTypeBox;
     private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
-    private Session session;
-    private Transaction transaction;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // set Room Ids to combo box
+
     }
 
     // navigation
@@ -60,7 +62,7 @@ public class ManageRoomFormController implements Initializable {
     }
 
     
-    public void addRoom(ActionEvent actionEvent) {
+    public void addRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
        String methName = "add";
        addAndUpdate(methName);
     }
@@ -74,7 +76,7 @@ public class ManageRoomFormController implements Initializable {
     }
 
 
-    public void addAndUpdate(String methName){
+    public void addAndUpdate(String methName) throws SQLException, ClassNotFoundException {
 
         String roomTypeId = roomId.getText();
         String rType = roomType.getText();
@@ -82,13 +84,9 @@ public class ManageRoomFormController implements Initializable {
         int qt = Integer.parseInt(qty.getText());
 
         if (methName.equals("add")){
-            Room r = new Room(roomTypeId,rType,kMoney,qt);
-            // set Dependency injection with roomBo and continue adding room
-            session = FactoryConfiguration.getInstance().getSession();
-            transaction = session.beginTransaction();
-            session.save(r);
-            transaction.commit();
-            session.close();
+
+            RoomDto room = new RoomDto(roomTypeId,rType,kMoney,qt);
+            boolean ok = roomBo.saveRoom(room);
 
         }else if(methName.equals("update")){
             // set Dependency injection with roomBo and continue update room
@@ -101,6 +99,8 @@ public class ManageRoomFormController implements Initializable {
         keyMoney.clear();
         qty.clear();
     }
+
+
 
 
 }

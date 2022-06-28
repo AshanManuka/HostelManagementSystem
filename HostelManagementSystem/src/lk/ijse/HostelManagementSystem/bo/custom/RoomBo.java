@@ -20,7 +20,5 @@ public interface RoomBo extends SuperBo {
 
     RoomDto searchRoom(String code) throws SQLException, ClassNotFoundException;
 
-    String generateNewRoomId() throws SQLException, ClassNotFoundException;
-
     ArrayList<String> searchRoomCode() throws SQLException, ClassNotFoundException;
 }

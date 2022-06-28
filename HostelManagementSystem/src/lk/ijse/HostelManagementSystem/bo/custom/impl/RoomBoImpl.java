@@ -23,7 +23,7 @@ public class RoomBoImpl implements RoomBo {
 
     @Override
     public boolean saveRoom(RoomDto dto) throws SQLException, ClassNotFoundException {
-        return false;
+        return roomDao.save(dto);
     }
 
     @Override
@@ -38,11 +38,6 @@ public class RoomBoImpl implements RoomBo {
 
     @Override
     public RoomDto searchRoom(String code) throws SQLException, ClassNotFoundException {
-        return null;
-    }
-
-    @Override
-    public String generateNewRoomId() throws SQLException, ClassNotFoundException {
         return null;
     }
 
