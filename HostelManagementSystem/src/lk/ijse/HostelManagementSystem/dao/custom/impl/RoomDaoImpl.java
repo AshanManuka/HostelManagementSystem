@@ -2,6 +2,7 @@ package lk.ijse.HostelManagementSystem.dao.custom.impl;
 
 import lk.ijse.HostelManagementSystem.dao.custom.RoomDao;
 import lk.ijse.HostelManagementSystem.dto.RoomDto;
+import lk.ijse.HostelManagementSystem.entity.Room;
 import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,12 +25,12 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public ArrayList<RoomDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Room> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean save(RoomDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Room dto) throws SQLException, ClassNotFoundException {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.save(dto);
@@ -41,12 +42,12 @@ public class RoomDaoImpl implements RoomDao {
 
 
     @Override
-    public RoomDto search(String s) throws SQLException, ClassNotFoundException {
+    public Room search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean update(RoomDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Room dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 

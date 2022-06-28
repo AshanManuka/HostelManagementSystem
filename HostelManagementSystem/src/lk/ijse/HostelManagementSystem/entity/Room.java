@@ -22,6 +22,6 @@ public class Room implements SuperEntity {
     private String roomType;
     private String keyMoney;
     private int qty;
-    @ManyToMany
-    private List<ReservationDto> reservation;
+    //@ManyToMany
+    //private List<ReservationDto> reservation;
 }

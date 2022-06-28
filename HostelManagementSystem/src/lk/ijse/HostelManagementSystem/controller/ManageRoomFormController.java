@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lk.ijse.HostelManagementSystem.bo.BOFactory;
 import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.RoomBoImpl;
 import lk.ijse.HostelManagementSystem.dto.RoomDto;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
 import lk.ijse.HostelManagementSystem.entity.Room;
@@ -40,8 +41,7 @@ public class ManageRoomFormController implements Initializable {
     public JFXTextField roomType;
     public JFXTextField qty;
     public JFXComboBox roomTypeBox;
-    private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
-
+    RoomBoImpl roomBoImpl = (RoomBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
 
 
     @Override
@@ -85,8 +85,8 @@ public class ManageRoomFormController implements Initializable {
 
         if (methName.equals("add")){
 
-            RoomDto room = new RoomDto(roomTypeId,rType,kMoney,qt);
-            boolean ok = roomBo.saveRoom(room);
+            Room room = new Room(roomTypeId,rType,kMoney,qt);
+            roomBoImpl.saveRoom(room);
 
         }else if(methName.equals("update")){
             // set Dependency injection with roomBo and continue update room

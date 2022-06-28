@@ -3,16 +3,18 @@ package lk.ijse.HostelManagementSystem.bo.custom.impl;
 import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
 import lk.ijse.HostelManagementSystem.dao.DaoFactory;
 import lk.ijse.HostelManagementSystem.dao.custom.RoomDao;
+import lk.ijse.HostelManagementSystem.dao.custom.impl.RoomDaoImpl;
 import lk.ijse.HostelManagementSystem.dto.RoomDto;
+import lk.ijse.HostelManagementSystem.entity.Room;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RoomBoImpl implements RoomBo {
-    private final RoomDao roomDao = (RoomDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.ROOM);
+    RoomDaoImpl roomDaoImpl = (RoomDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.ROOM);
 
     @Override
-    public ArrayList<RoomDto> getAllRoom() throws SQLException, ClassNotFoundException {
+    public ArrayList<Room> getAllRoom() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -22,12 +24,12 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
-    public boolean saveRoom(RoomDto dto) throws SQLException, ClassNotFoundException {
-        return roomDao.save(dto);
+    public boolean saveRoom(Room dto) throws SQLException, ClassNotFoundException {
+        return roomDaoImpl.save(dto);
     }
 
     @Override
-    public boolean updateRoom(RoomDto dto) throws SQLException, ClassNotFoundException {
+    public boolean updateRoom(Room dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
