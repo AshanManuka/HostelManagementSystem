@@ -9,14 +9,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.UniqueConstraint;
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 @Entity
-public class Room {
+public class Room implements SuperEntity {
     @Id
     private String roomId;
     private String roomType;
