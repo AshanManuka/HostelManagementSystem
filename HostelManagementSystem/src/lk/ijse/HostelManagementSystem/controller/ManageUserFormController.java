@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,10 +17,17 @@ import javafx.stage.Stage;
 import lk.ijse.HostelManagementSystem.bo.BOFactory;
 import lk.ijse.HostelManagementSystem.bo.custom.StudentBo;
 import lk.ijse.HostelManagementSystem.bo.custom.UserBo;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.RoomBoImpl;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.UserBoImpl;
+import lk.ijse.HostelManagementSystem.entity.User;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ManageUserFormController {
+public class ManageUserFormController implements Initializable {
     public AnchorPane context;
     public ImageView homeBtn;
     public Text idText;
@@ -40,7 +48,18 @@ public class ManageUserFormController {
     public JFXButton delete;
     public JFXButton add;
     public JFXButton clear;
-    private UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    UserBoImpl userBoImpl = (UserBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+
+    @SneakyThrows
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        String newId = generateNewId();
+        userId.setText(newId);
+    }
+
+    private String generateNewId() throws SQLException, ClassNotFoundException {
+    return userBoImpl.generateNewUserId();
+    }
 
     // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
@@ -54,18 +73,19 @@ public class ManageUserFormController {
     }
 
 
-    public void updateUser(ActionEvent actionEvent) {
+    public void updateUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String p1 = uPassword.getText();
         String p2 = comfirmPassword.getText();
 
         if (p2.equals(p1)){
-            update();
+            String s = "update";
+            addAndUpdate(s);
         }else{
-        // Show alert about passwords are not match
+            new Alert(Alert.AlertType.WARNING,"Passwords are Doesn't Match !..").showAndWait();
         }
     }
 
-    private void update() {
+    private void addAndUpdate(String s) throws SQLException, ClassNotFoundException {
         String uId = userId.getText();
         String Name = userName.getText();
         String uAddress = userAddress.getText();
@@ -73,21 +93,40 @@ public class ManageUserFormController {
         String usName = uName.getText();
         String newPassword = comfirmPassword.getText();
 
-        // update function
+        if(s.equals("add")){
+            User user = new User(uId,Name,uAddress,uContact,usName,newPassword);
+            boolean add = userBoImpl.saveUser(user);
+        }else if(s.equals("update")){
+            User user = new User(uId,Name,uAddress,uContact,usName,newPassword);
+            boolean updated = userBoImpl.updateUser(user);
+        }
 
     }
 
-    public void deleteUser(ActionEvent actionEvent) {
+    public void deleteUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String uId = userId.getText();
-        // delete function
+        boolean deleted = userBoImpl.deleteUser(uId);
     }
 
-    public void addRoom(ActionEvent actionEvent) {
+    public void addRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        String s = "add";
+        addAndUpdate(s);
     }
 
     public void clearData(ActionEvent actionEvent) {
+    userId.clear();
+    uName.clear();
+    userAddress.clear();
+    userContact.clear();
+    userName.clear();
+    uPassword.clear();
+    comfirmPassword.clear();
+
     }
 
     public void searchUser(ActionEvent actionEvent) {
+        // find me using static variable from loggin
+        // button must be large
     }
+
 }
