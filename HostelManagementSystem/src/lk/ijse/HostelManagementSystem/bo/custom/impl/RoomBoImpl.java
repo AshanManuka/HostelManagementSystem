@@ -20,7 +20,7 @@ public class RoomBoImpl implements RoomBo {
 
     @Override
     public boolean deleteRoom(String code) throws SQLException, ClassNotFoundException {
-        return false;
+        return roomDaoImpl.delete(code);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class RoomBoImpl implements RoomBo {
 
     @Override
     public boolean updateRoom(Room dto) throws SQLException, ClassNotFoundException {
-        return false;
+        return roomDaoImpl.update(dto);
     }
 
     @Override
@@ -39,12 +39,12 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
-    public RoomDto searchRoom(String code) throws SQLException, ClassNotFoundException {
-        return null;
+    public Room searchRoom(String code) throws SQLException, ClassNotFoundException {
+        return roomDaoImpl.search(code);
     }
 
     @Override
     public ArrayList<String> searchRoomCode() throws SQLException, ClassNotFoundException {
-        return null;
+        return roomDaoImpl.searchId();
     }
 }

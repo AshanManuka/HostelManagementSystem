@@ -1,5 +1,6 @@
 package lk.ijse.HostelManagementSystem.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -35,6 +36,10 @@ public class ManageUserFormController {
     public Text passwordText2;
     public JFXPasswordField uPassword;
     public JFXPasswordField comfirmPassword;
+    public JFXButton updateb;
+    public JFXButton delete;
+    public JFXButton add;
+    public JFXButton clear;
     private UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     // Navigation
@@ -75,5 +80,14 @@ public class ManageUserFormController {
     public void deleteUser(ActionEvent actionEvent) {
         String uId = userId.getText();
         // delete function
+    }
+
+    public void addRoom(ActionEvent actionEvent) {
+    }
+
+    public void clearData(ActionEvent actionEvent) {
+    }
+
+    public void searchUser(ActionEvent actionEvent) {
     }
 }

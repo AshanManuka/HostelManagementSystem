@@ -29,6 +29,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
     public UserDto search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }

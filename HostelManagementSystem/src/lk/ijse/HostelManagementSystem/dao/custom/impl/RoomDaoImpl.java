@@ -6,9 +6,11 @@ import lk.ijse.HostelManagementSystem.entity.Room;
 import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoomDaoImpl implements RoomDao {
     private Session session;
@@ -42,17 +44,65 @@ public class RoomDaoImpl implements RoomDao {
 
 
     @Override
+    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+
+        ArrayList<String> idList = new ArrayList<>();
+
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        String hql = "FROM Room";
+        Query query = session.createQuery(hql);
+        List<Room> roomList = query.list();
+
+        for (Room room: roomList) {
+            idList.add(room.getRoomId());
+        }
+
+        transaction.commit();
+        session.close();
+
+        return idList;
+    }
+
+    @Override
     public Room search(String s) throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM Room WHERE roomId =:room_id";
+        Query query = session.createQuery(hql);
+        query.setParameter("room_id",s);
+        List<Room> roomList = query.list();
+
+        for (Room room: roomList) {
+            return room;
+        }
+
+        transaction.commit();
+        session.close();
+
         return null;
     }
 
     @Override
     public boolean update(Room dto) throws SQLException, ClassNotFoundException {
-        return false;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        session.update(dto);
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 
     @Override
     public boolean delete(String s) throws SQLException, ClassNotFoundException {
-        return false;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        Room room = session.load(Room.class,s);
+        session.delete(room);
+        transaction.commit();
+        session.close();
+        return true;
     }
 }

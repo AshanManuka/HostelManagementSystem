@@ -2,6 +2,8 @@ package lk.ijse.HostelManagementSystem.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,12 +22,14 @@ import lk.ijse.HostelManagementSystem.dto.RoomDto;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
 import lk.ijse.HostelManagementSystem.entity.Room;
 import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
+import lombok.SneakyThrows;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ManageRoomFormController implements Initializable {
@@ -44,9 +48,36 @@ public class ManageRoomFormController implements Initializable {
     RoomBoImpl roomBoImpl = (RoomBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
 
 
+    @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // set Room Ids to combo box
+        loadAllId();
+
+        roomIdBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            String nwValue = (String) newValue;
+            roomId.setText(nwValue);
+
+
+            try {
+                Room room = roomBoImpl.searchRoom(nwValue);
+                roomType.setText(room.getRoomType());
+                keyMoney.setText(room.getKeyMoney());
+                qty.setText(String.valueOf(room.getQty()));
+
+
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+
+    }
+
+    private void loadAllId() throws SQLException, ClassNotFoundException {
+        ArrayList<String> room = roomBoImpl.searchRoomCode();
+        ObservableList oList= FXCollections.observableArrayList(room);
+        roomIdBox.setItems(oList);
 
     }
 
@@ -67,12 +98,17 @@ public class ManageRoomFormController implements Initializable {
        addAndUpdate(methName);
     }
 
-    public void updateRoom(ActionEvent actionEvent) {
+    public void updateRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String methName = "update";
+        addAndUpdate(methName);
     }
 
-    public void deleteRoom(ActionEvent actionEvent) {
-        // set Dependency injection with roomBo and continue delete room
+    public void deleteRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        String rId = roomId.getText();
+        boolean ok = roomBoImpl.deleteRoom(rId);
+        if (ok){
+            new Alert(Alert.AlertType.CONFIRMATION,"Room Deleted !").showAndWait();
+        }
     }
 
 
@@ -86,10 +122,17 @@ public class ManageRoomFormController implements Initializable {
         if (methName.equals("add")){
 
             Room room = new Room(roomTypeId,rType,kMoney,qt);
-            roomBoImpl.saveRoom(room);
+            boolean add = roomBoImpl.saveRoom(room);
+            if (add){
+                new Alert(Alert.AlertType.CONFIRMATION,"Room Added !").showAndWait();
+            }
 
         }else if(methName.equals("update")){
-            // set Dependency injection with roomBo and continue update room
+            Room room = new Room(roomTypeId,rType,kMoney,qt);
+            boolean updated = roomBoImpl.updateRoom(room);
+            if (updated){
+                new Alert(Alert.AlertType.CONFIRMATION,"Room Updated !").showAndWait();
+            }
         }
     }
 

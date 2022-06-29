@@ -28,6 +28,11 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
+    @Override
     public StudentDto search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
