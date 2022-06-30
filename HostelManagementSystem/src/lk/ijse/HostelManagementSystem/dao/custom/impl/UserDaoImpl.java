@@ -61,7 +61,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User search(String s) throws SQLException, ClassNotFoundException {
-        return null;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        User user = session.load(User.class,s);
+        transaction.commit();
+        session.close();
+        return user;
+
     }
 
     @Override

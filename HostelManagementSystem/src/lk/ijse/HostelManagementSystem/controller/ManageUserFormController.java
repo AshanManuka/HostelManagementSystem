@@ -49,6 +49,7 @@ public class ManageUserFormController implements Initializable {
     public JFXButton add;
     public JFXButton clear;
     UserBoImpl userBoImpl = (UserBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    public static String loginUserId;
 
     @SneakyThrows
     @Override
@@ -130,9 +131,16 @@ public class ManageUserFormController implements Initializable {
 
     }
 
-    public void searchUser(ActionEvent actionEvent) {
-        // find me using static variable from loggin
-        // button must be large
+    public void searchUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        userId.clear();
+        User user = userBoImpl.search(loginUserId);
+        if (user != null){
+            System.out.println(user.getUserId());
+          // create other columns
+        }
+
+
+
     }
 
 }

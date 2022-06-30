@@ -24,6 +24,8 @@ public interface UserBo extends SuperBo {
 
     String searchUser(String code) throws SQLException, ClassNotFoundException;
 
+    User search(String code) throws SQLException, ClassNotFoundException;
+
     String generateNewUserId() throws SQLException, ClassNotFoundException;
 
     ArrayList<String> searchUserCode() throws SQLException, ClassNotFoundException;

@@ -54,6 +54,11 @@ public class UserBoImpl implements UserBo {
     }
 
     @Override
+    public User search(String code) throws SQLException, ClassNotFoundException {
+        return userDaoImpl.search(code);
+    }
+
+    @Override
     public String generateNewUserId() throws SQLException, ClassNotFoundException {
         return userDaoImpl.generateNewID();
     }

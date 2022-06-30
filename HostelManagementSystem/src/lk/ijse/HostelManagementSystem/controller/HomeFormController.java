@@ -34,6 +34,10 @@ public class HomeFormController {
         String passwordId = userBoImpl.checkPassword(password.getText());
 
         if (uNameId.equals(passwordId)){
+
+            searchUser(uNameId);
+            ManageUserFormController.loginUserId = uNameId;
+
             Parent parent = FXMLLoader.load(getClass().getResource("../view/dashboardForm.fxml"));
             Stage stage1 = new Stage();
             stage1.setScene(new Scene(parent));
@@ -41,8 +45,6 @@ public class HomeFormController {
 
             Stage stage2 = (Stage) loginBtl.getScene().getWindow();
             stage2.close();
-
-            searchUser(uNameId);
         }else{
             new Alert(Alert.AlertType.WARNING,"Doesn't match Username or Password !").showAndWait();
         }
