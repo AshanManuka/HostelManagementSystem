@@ -16,10 +16,6 @@ public class RoomDaoImpl implements RoomDao {
     private Session session;
     private Transaction transaction;
 
-    @Override
-    public String exist() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {

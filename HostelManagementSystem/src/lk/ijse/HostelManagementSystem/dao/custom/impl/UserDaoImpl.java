@@ -19,10 +19,6 @@ public class UserDaoImpl implements UserDao {
     private Transaction transaction;
     int newCode;
 
-    @Override
-    public String exist() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
@@ -88,5 +84,47 @@ public class UserDaoImpl implements UserDao {
         transaction.commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public String checkUserName(String code) throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM User WHERE uName =:user_name";
+        Query query = session.createQuery(hql);
+        query.setParameter("user_name",code);
+        List<User> userList = query.list();
+
+        for (User user : userList) {
+            String uId = user.getUserId();
+            return uId;
+        }
+
+        transaction.commit();
+        session.close();
+
+        return null;
+    }
+
+    @Override
+    public String checkPassword(String code) throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM User WHERE uPassword =:user_pass";
+        Query query = session.createQuery(hql);
+        query.setParameter("user_pass",code);
+        List<User> userList = query.list();
+
+        for (User user : userList) {
+            String uId = user.getUserId();
+            return uId;
+        }
+
+        transaction.commit();
+        session.close();
+
+        return null;
     }
 }

@@ -18,9 +18,11 @@ public interface UserBo extends SuperBo {
 
     boolean updateUser(User dto) throws SQLException, ClassNotFoundException;
 
-    boolean existsUser(String code) throws SQLException, ClassNotFoundException;
+    String checkUserName(String code) throws SQLException, ClassNotFoundException;
 
-    Room searchUser(String code) throws SQLException, ClassNotFoundException;
+    String checkPassword(String code) throws SQLException, ClassNotFoundException;
+
+    String searchUser(String code) throws SQLException, ClassNotFoundException;
 
     String generateNewUserId() throws SQLException, ClassNotFoundException;
 

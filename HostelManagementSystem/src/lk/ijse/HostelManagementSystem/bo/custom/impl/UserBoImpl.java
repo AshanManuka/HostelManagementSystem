@@ -38,12 +38,18 @@ public class UserBoImpl implements UserBo {
     }
 
     @Override
-    public boolean existsUser(String code) throws SQLException, ClassNotFoundException {
-        return false;
+    public String checkUserName(String code) throws SQLException, ClassNotFoundException {
+        return userDaoImpl.checkUserName(code);
     }
 
     @Override
-    public Room searchUser(String code) throws SQLException, ClassNotFoundException {
+    public String checkPassword(String code) throws SQLException, ClassNotFoundException {
+        return userDaoImpl.checkPassword(code);
+    }
+
+
+    @Override
+    public String searchUser(String code) throws SQLException, ClassNotFoundException {
         return null;
     }
 

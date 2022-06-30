@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDaoImpl implements StudentDao {
-    @Override
-    public String exist() throws SQLException, ClassNotFoundException {
-        return null;
-    }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
