@@ -21,7 +21,7 @@ public class Student {
     private String dob;
     private String gender;
 
-    private List<Room> roomList;
+//    private List<Room> roomList;
 
 
 }

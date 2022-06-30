@@ -22,8 +22,10 @@ public class HomeFormController {
     public JFXPasswordField password;
     public JFXButton loginBtl;
     public JFXButton cancelBtn;
+    public JFXTextField passwordShow;
     UserBoImpl userBoImpl = (UserBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
-    public static String loggedUser;
+    int i =0;
+
 
     //Check database & do login
     public void userLogin(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
@@ -39,6 +41,8 @@ public class HomeFormController {
 
             Stage stage2 = (Stage) loginBtl.getScene().getWindow();
             stage2.close();
+
+            searchUser(uNameId);
         }else{
             new Alert(Alert.AlertType.WARNING,"Doesn't match Username or Password !").showAndWait();
         }
@@ -47,7 +51,18 @@ public class HomeFormController {
 
     // show password function
     public void showPassword(MouseEvent mouseEvent) {
-        System.out.println("Show password function");
+       String pWd = password.getText();
+        i++;
+       int x = i % 2;
+        if (x != 0){
+            password.setVisible(false);
+            passwordShow.setVisible(true);
+            passwordShow.setText(pWd);
+        }else{
+            passwordShow.setVisible(false);
+            password.setVisible(true);
+        }
+
     }
 
     // close form
@@ -55,9 +70,10 @@ public class HomeFormController {
         System.out.println("Cancel function");
     }
 
-    public void searchUser(){
-        //  search user's name from userName
-        // set loggedUser by the result
+    public void searchUser(String id) throws SQLException, ClassNotFoundException {
+        String name = userBoImpl.searchUser(id);
+        DashboardFormController.sName = name;
+
     }
 
 }

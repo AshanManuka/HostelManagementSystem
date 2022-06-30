@@ -100,7 +100,6 @@ public class UserDaoImpl implements UserDao {
             String uId = user.getUserId();
             return uId;
         }
-
         transaction.commit();
         session.close();
 
@@ -121,7 +120,26 @@ public class UserDaoImpl implements UserDao {
             String uId = user.getUserId();
             return uId;
         }
+        transaction.commit();
+        session.close();
 
+        return null;
+    }
+
+    @Override
+    public String searchName(String code) throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM User WHERE userId =:user_id";
+        Query query = session.createQuery(hql);
+        query.setParameter("user_id",code);
+        List<User> userList = query.list();
+
+        for (User user : userList) {
+            String userName = user.getUserName();
+            return userName;
+        }
         transaction.commit();
         session.close();
 

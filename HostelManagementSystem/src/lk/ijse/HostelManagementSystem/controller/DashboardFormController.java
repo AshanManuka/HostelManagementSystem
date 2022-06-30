@@ -3,6 +3,7 @@ package lk.ijse.HostelManagementSystem.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -12,8 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class DashboardFormController {
+public class DashboardFormController implements Initializable {
     public AnchorPane halfContext;
     public Label date;
     public Label loggedUser;
@@ -22,6 +25,15 @@ public class DashboardFormController {
     public ImageView userBtn;
     public JFXButton logOutBtn;
     public ImageView newReservationBtn;
+    public static String sName;
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        fillLabel();
+
+    }
 
     //Navigation Part
     public void createReservation(MouseEvent mouseEvent) throws IOException {
@@ -83,6 +95,7 @@ public class DashboardFormController {
     }
 
     public void fillLabel(){
-        // set user label
+        loggedUser.setText(sName);
     }
+
 }

@@ -18,9 +18,14 @@ import javafx.stage.Stage;
 import lk.ijse.HostelManagementSystem.bo.BOFactory;
 import lk.ijse.HostelManagementSystem.bo.custom.RoomBo;
 import lk.ijse.HostelManagementSystem.bo.custom.StudentBo;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.RoomBoImpl;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.StudentBoImpl;
+import lk.ijse.HostelManagementSystem.dto.StudentDto;
+import lk.ijse.HostelManagementSystem.entity.Student;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -52,8 +57,8 @@ public class ReservationFormController implements Initializable {
     public JFXButton checkRoomBtn;
     public JFXRadioButton payLater;
     public JFXButton checkAvailable;
-    private StudentBo studentBo = (StudentBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
-    private RoomBo roomBo = (RoomBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
+    StudentBoImpl studentBoImpl = (StudentBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
+    RoomBoImpl roomBoImpl = (RoomBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
     String gender;
     String status;
 
@@ -87,20 +92,23 @@ public class ReservationFormController implements Initializable {
         context.getChildren().add(parent);
     }
 
-    public void comfirmReservation(ActionEvent actionEvent) {
+    public void comfirmReservation(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         addStudent();
     }
 
-    private void addStudent() {
+    private void addStudent() throws SQLException, ClassNotFoundException {
         String sId = studentId.getText();
         String sName = studentName.getText();
         String sAddress = studentAddress.getText();
         String sContact = studentContact.getText();
         String dob = String.valueOf(DatePicker.getValue());
-        // grab gender
-        // add student
+        String gd = gender;
 
-        selectRoom(sId);
+        boolean b = studentBoImpl.saveStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),dob,gd));
+
+
+
+        // selectRoom(sId);
 
 
     }

@@ -38,7 +38,6 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXPasswordField fx:id="password" focusColor="#0c1940" layoutX="288.0" layoutY="196.0" prefHeight="25.0" prefWidth="183.0" unFocusColor="#220404" />
       <ImageView fitHeight="26.0" fitWidth="29.0" layoutX="476.0" layoutY="199.0" onMouseClicked="#showPassword" pickOnBounds="true">
          <image>
             <Image url="@../Assert/visible.png" />
@@ -58,10 +57,16 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Text>
+      <JFXTextField fx:id="passwordShow" focusColor="#0e215b" layoutX="287.0" layoutY="191.0" prefHeight="26.0" prefWidth="183.0" unFocusColor="#390404">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
       <Text fill="#430909" layoutX="403.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University of Colombo" wrappingWidth="154.13671875">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Text>
+      <JFXPasswordField fx:id="password" focusColor="#0c1940" layoutX="288.0" layoutY="196.0" prefHeight="25.0" prefWidth="183.0" unFocusColor="#220404" />
    </children>
 </AnchorPane>

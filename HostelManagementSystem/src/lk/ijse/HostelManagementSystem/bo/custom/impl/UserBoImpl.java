@@ -50,7 +50,7 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public String searchUser(String code) throws SQLException, ClassNotFoundException {
-        return null;
+        return userDaoImpl.searchName(code);
     }
 
     @Override

@@ -10,4 +10,6 @@ public interface UserDao extends CrudDao<User,String> {
     String checkUserName(String code) throws SQLException, ClassNotFoundException;
 
     String checkPassword(String code) throws SQLException, ClassNotFoundException;
+
+    String searchName(String code) throws SQLException, ClassNotFoundException;
 }
