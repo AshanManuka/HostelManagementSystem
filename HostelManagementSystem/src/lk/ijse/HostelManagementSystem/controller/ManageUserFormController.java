@@ -58,7 +58,13 @@ public class ManageUserFormController implements Initializable {
     }
 
     private String generateNewId() throws SQLException, ClassNotFoundException {
-    return userBoImpl.generateNewUserId();
+    String lastId = userBoImpl.generateNewUserId();
+        if (lastId != null) {
+            int newId = Integer.parseInt(lastId.replace("U00-", "")) + 1;
+            return String.format("U00-%03d", newId);
+        } else {
+            return "U00-001";
+        }
     }
 
     // Navigation

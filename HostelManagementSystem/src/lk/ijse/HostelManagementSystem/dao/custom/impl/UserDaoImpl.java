@@ -17,6 +17,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     private Session session;
     private Transaction transaction;
+    int newCode;
 
     @Override
     public String exist() throws SQLException, ClassNotFoundException {
@@ -25,25 +26,20 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
+
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
         String hql = "FROM User ORDER BY userId DESC";
         List<User> userList = session.createQuery(hql).list();
-        try {
-            for (User rst : userList) {
-            String id = rst.getUserId();
-            int newCode = Integer.parseInt(id.replace("U00-", "")) + 1;
-            return String.format("u00-%03d", newCode);
-        }
-        }catch (Exception e){
-        e.printStackTrace();
+        for (User user: userList) {
+            String  lastId = user.getUserId();
+            return lastId;
         }
 
         transaction.commit();
         session.close();
-
-        return "U00-001";
+        return null;
     }
 
     @Override
