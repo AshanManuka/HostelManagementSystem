@@ -46,7 +46,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="delete" layoutX="597.0" layoutY="403.0" onAction="#deleteUser" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: darkred" text="Delete My Account" textFill="WHITE">
+      <JFXButton fx:id="delete" layoutX="597.0" layoutY="404.0" onAction="#deleteUser" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: darkred" text="Delete My Account" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -104,17 +104,17 @@
       <JFXPasswordField fx:id="uPassword" layoutX="224.0" layoutY="379.0" prefHeight="25.0" prefWidth="204.0" />
       <JFXPasswordField fx:id="comfirmPassword" layoutX="224.0" layoutY="428.0" prefHeight="25.0" prefWidth="204.0" />
       <Separator layoutX="80.0" layoutY="311.0" prefHeight="4.0" prefWidth="373.0" />
-      <JFXButton fx:id="add" layoutX="598.0" layoutY="241.0" onAction="#addRoom" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #0a3d62" text="Add User" textFill="WHITE">
+      <JFXButton fx:id="add" layoutX="598.0" layoutY="242.0" onAction="#addRoom" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #0a3d62" text="Add User" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="clear" layoutX="597.0" layoutY="152.0" onAction="#clearData" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #222f3e" text="Clear Fields" textFill="WHITE">
+      <JFXButton fx:id="clear" layoutX="597.0" layoutY="157.0" onAction="#clearData" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #222f3e" text="Clear Fields" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="480.0" layoutY="89.0" onAction="#searchUser" prefHeight="49.0" prefWidth="96.0" style="-fx-background-color: #b33939;" text="Find Me" textFill="WHITE">
+      <JFXButton layoutX="595.0" layoutY="76.0" onAction="#searchUser" prefHeight="65.0" prefWidth="275.0" style="-fx-background-color: #b33939;" text="Find Me" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

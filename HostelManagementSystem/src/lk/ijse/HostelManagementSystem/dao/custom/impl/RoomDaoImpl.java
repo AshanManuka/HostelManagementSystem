@@ -27,8 +27,15 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public ArrayList<Room> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+    public List<Room> getAll() throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        Query query = session.createQuery("FROM Room");
+        List<Room> list = query.list();
+        transaction.commit();
+        session.close();
+
+       return list;
     }
 
     @Override

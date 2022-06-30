@@ -7,9 +7,10 @@ import lk.ijse.HostelManagementSystem.entity.Room;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface RoomBo extends SuperBo {
-    ArrayList<Room> getAllRoom() throws SQLException, ClassNotFoundException;
+    List<Room> getAllRoom() throws SQLException, ClassNotFoundException;
 
     boolean deleteRoom(String code) throws SQLException, ClassNotFoundException;
 

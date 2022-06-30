@@ -2,9 +2,11 @@ package lk.ijse.HostelManagementSystem.dao.custom.impl;
 
 import lk.ijse.HostelManagementSystem.dao.custom.StudentDao;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
+import lk.ijse.HostelManagementSystem.entity.Student;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentDaoImpl implements StudentDao {
     @Override
@@ -18,12 +20,12 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public ArrayList<StudentDto> getAll() throws SQLException, ClassNotFoundException {
+    public List<Student> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean save(StudentDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Student dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -33,12 +35,12 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public StudentDto search(String s) throws SQLException, ClassNotFoundException {
+    public Student search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean update(StudentDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Student dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
