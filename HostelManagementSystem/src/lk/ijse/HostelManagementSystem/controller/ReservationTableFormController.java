@@ -61,14 +61,11 @@ public class ReservationTableFormController implements Initializable {
         resTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
                if (newValue != null) {
-               // selectedLbl.setText(newValue.getReservationId());
-               // selectedSId = newValue.getStudentId();
-            }
+                String s = newValue.getResId();
+                selectedLbl.setText(s);
+               }
         });
-
-
-
-    }
+}
 
     private void loadReservations() throws SQLException, ClassNotFoundException {
         List<Reservation> reservationList = reservationBo.getAllReservation();
@@ -95,9 +92,8 @@ public class ReservationTableFormController implements Initializable {
         context.getChildren().add(parent);
     }
 
-    public void deleteRes(ActionEvent actionEvent) {
-        System.out.println(selectedSId);
-        // set delete function
+    public void deleteRes(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        boolean b = reservationBo.deleteReservation(selectedLbl.getText());
     }
 
 }

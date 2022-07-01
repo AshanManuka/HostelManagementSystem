@@ -20,7 +20,7 @@ public class ReservationBoImpl implements ReservationBo {
 
     @Override
     public boolean deleteReservation(String code) throws SQLException, ClassNotFoundException {
-        return false;
+        return reservationDaoImpl.delete(code);
     }
 
     @Override
