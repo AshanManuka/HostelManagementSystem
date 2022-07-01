@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.List;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,8 +21,7 @@ public class Student {
     private int contact;
     private String dob;
     private String gender;
-
-//    private List<Room> roomList;
+    //private List<Room> rooms;
 
 
 }

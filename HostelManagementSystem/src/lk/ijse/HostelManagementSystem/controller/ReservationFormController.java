@@ -104,7 +104,7 @@ public class ReservationFormController implements Initializable {
         String dob = String.valueOf(DatePicker.getValue());
         String gd = gender;
 
-        boolean b = studentBoImpl.saveStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),dob,gd));
+        //boolean b = studentBoImpl.saveStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),dob,gd));
 
 
 
