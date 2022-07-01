@@ -35,6 +35,11 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
+    public boolean updateQty(String code) throws SQLException, ClassNotFoundException {
+        return roomDaoImpl.updateQty(code);
+    }
+
+    @Override
     public String generateNewId() throws SQLException, ClassNotFoundException {
         return roomDaoImpl.generateNewID();
     }

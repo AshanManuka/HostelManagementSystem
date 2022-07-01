@@ -110,4 +110,34 @@ public class RoomDaoImpl implements RoomDao {
         session.close();
         return true;
     }
+
+    @Override
+    public boolean updateQty(String code) throws SQLException, ClassNotFoundException {
+        int qt;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        String hql = "FROM Room WHERE roomType =:room_type";
+        Query query = session.createQuery(hql);
+        query.setParameter("room_type",code);
+        List<Room> roomList = query.list();
+
+        for (Room room: roomList) {
+         qt = room.getQty();
+         int newQty = qt - 1;
+            System.out.println(qt);
+            System.out.println(newQty);
+
+            Query q=session.createQuery("update Room set qty=:n where roomType=:i");
+            q.setParameter("n",newQty);
+            q.setParameter("i",code);
+        }
+
+
+
+
+
+        transaction.commit();
+        session.close();
+        return true;
+    }
 }

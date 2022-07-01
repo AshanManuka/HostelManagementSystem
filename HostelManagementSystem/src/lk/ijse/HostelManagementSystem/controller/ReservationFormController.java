@@ -121,6 +121,72 @@ public class ReservationFormController implements Initializable {
         }
     }
 
+
+    public void comfirmReservation(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        addStudent();
+    }
+
+    private void addStudent() throws SQLException, ClassNotFoundException {
+        String sId = studentId.getText();
+        String sName = studentName.getText();
+        String sAddress = studentAddress.getText();
+        String sContact = studentContact.getText();
+        String dob = String.valueOf(DatePicker.getValue());
+        String gd = gender;
+
+        boolean s = studentBoImpl.saveStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),dob,gd));
+        selectRoom(sId);
+    }
+
+    private void selectRoom(String sId) throws SQLException, ClassNotFoundException {
+     String resId = roomId.getText();
+     String roomT = roomType.getText();
+     String resDate = today();
+     String rmId = roomId.getText();
+
+     Reservation res = new Reservation(resId,roomT,sId,resDate,status);
+     boolean r = reservationBo.saveReservation(res);
+     if (r){
+         System.out.println("done");
+     }
+     manageRoom();
+    }
+
+    private void manageRoom() throws SQLException, ClassNotFoundException {
+        String selectedRoom = roomType.getText();
+
+        boolean d = roomBoImpl.updateQty(selectedRoom);
+    }
+
+    private String today() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dte = dtf.format(now);
+        return dte;
+    }
+
+    public void genderAction(ActionEvent actionEvent) {
+        if (maleBtn.isSelected()){
+            gender = "Male";
+            femaleBtn.setSelected(false);
+        }
+        if (femaleBtn.isSelected()){
+            gender = "Female";
+            maleBtn.setSelected(false);
+        }
+    }
+
+    public void payAction(ActionEvent actionEvent) {
+        if (payNow.isSelected()){
+            status = "Key Money is Done";
+            payLater.setSelected(false);
+        }
+        if (payLater.isSelected()){
+            status = "Key Money is not Payed";
+            payNow.setSelected(false);
+        }
+    }
+
     // Navigation
     public void goHome(MouseEvent mouseEvent) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource("../view/dashboardForm.fxml"));
@@ -146,66 +212,4 @@ public class ReservationFormController implements Initializable {
         context.getChildren().add(parent);
     }
 
-    public void comfirmReservation(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        addStudent();
-    }
-
-    private void addStudent() throws SQLException, ClassNotFoundException {
-        String sId = studentId.getText();
-        String sName = studentName.getText();
-        String sAddress = studentAddress.getText();
-        String sContact = studentContact.getText();
-        String dob = String.valueOf(DatePicker.getValue());
-        String gd = gender;
-
-        boolean s = studentBoImpl.saveStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),dob,gd));
-        selectRoom(sId);
-
-
-    }
-
-    private void selectRoom(String sId) throws SQLException, ClassNotFoundException {
-     String resId = roomId.getText();
-     String roomT = roomType.getText();
-     String resDate = today();
-     String rmId = roomId.getText();
-
-     Reservation res = new Reservation(resId,roomT,sId,resDate,status);
-     boolean r = reservationBo.saveReservation(res);
-     if (r){
-         System.out.println("done");
-     }
-
-    }
-
-    private String today() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String dte = dtf.format(now);
-        return dte;
-    }
-
-
-
-    public void genderAction(ActionEvent actionEvent) {
-        if (maleBtn.isSelected()){
-            gender = "Male";
-            femaleBtn.setSelected(false);
-        }
-        if (femaleBtn.isSelected()){
-            gender = "Female";
-            maleBtn.setSelected(false);
-        }
-    }
-
-    public void payAction(ActionEvent actionEvent) {
-        if (payNow.isSelected()){
-            status = "Key Money is Done";
-            payLater.setSelected(false);
-        }
-        if (payLater.isSelected()){
-            status = "Key Money is not Payed";
-            payNow.setSelected(false);
-        }
-    }
 }
