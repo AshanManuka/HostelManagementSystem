@@ -14,7 +14,6 @@ import javax.persistence.Id;
 public class Reservation {
    @Id
     private String resId;
-    private String roomId;
     private String roomTypeId;
     private String studentId;
     private String date;

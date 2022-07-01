@@ -18,7 +18,7 @@ public interface RoomBo extends SuperBo {
 
     boolean updateRoom(Room dto) throws SQLException, ClassNotFoundException;
 
-    boolean existsRoom(String code) throws SQLException, ClassNotFoundException;
+    String generateNewId() throws SQLException, ClassNotFoundException;
 
     Room searchRoom(String code) throws SQLException, ClassNotFoundException;
 

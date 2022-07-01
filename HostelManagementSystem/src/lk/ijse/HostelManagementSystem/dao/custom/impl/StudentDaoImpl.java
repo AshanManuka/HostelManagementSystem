@@ -4,6 +4,7 @@ import lk.ijse.HostelManagementSystem.dao.custom.StudentDao;
 import lk.ijse.HostelManagementSystem.dto.StudentDto;
 import lk.ijse.HostelManagementSystem.entity.Room;
 import lk.ijse.HostelManagementSystem.entity.Student;
+import lk.ijse.HostelManagementSystem.entity.User;
 import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,6 +20,19 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM Student ORDER BY studentId DESC";
+        List<Student> studentList = session.createQuery(hql).list();
+        for (Student student: studentList) {
+            String  lastId = student.getStudentId();
+            return lastId;
+        }
+
+        transaction.commit();
+        session.close();
+
         return null;
     }
 

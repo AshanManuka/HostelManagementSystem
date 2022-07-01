@@ -48,7 +48,7 @@ public class StudentBoImpl implements StudentBo{
 
     @Override
     public String generateNewStudentId() throws SQLException, ClassNotFoundException {
-        return null;
+        return studentDaoImpl.generateNewID();
     }
 
     @Override
