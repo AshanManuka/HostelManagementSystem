@@ -7,9 +7,10 @@ import lk.ijse.HostelManagementSystem.entity.Student;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ReservationBo extends SuperBo {
-    ArrayList<Reservation> getAllReservation() throws SQLException, ClassNotFoundException;
+    List<Reservation> getAllReservation() throws SQLException, ClassNotFoundException;
 
     boolean deleteReservation(String code) throws SQLException, ClassNotFoundException;
 

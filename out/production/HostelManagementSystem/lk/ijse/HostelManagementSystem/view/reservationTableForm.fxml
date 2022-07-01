@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="context" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HostelManagementSystem.controller.ReservationTableFormController">
    <children>
       <ImageView fitHeight="497.0" fitWidth="899.0" pickOnBounds="true">
@@ -40,9 +39,9 @@
       <TableView fx:id="resTable" layoutX="14.0" layoutY="65.0" prefHeight="352.0" prefWidth="872.0">
         <columns>
           <TableColumn fx:id="resId" prefWidth="183.3333282470703" text="Reservation ID" />
-          <TableColumn fx:id="resDate" prefWidth="165.33331298828125" text="Date" />
+          <TableColumn fx:id="roomType" prefWidth="165.33331298828125" text="Room Type" />
             <TableColumn fx:id="studentId" prefWidth="178.66668701171875" text="Student Id" />
-            <TableColumn fx:id="roomId" prefWidth="196.0" text="Room Id" />
+            <TableColumn fx:id="date" prefWidth="196.0" text="Date" />
             <TableColumn fx:id="status" prefWidth="144.0" text="Status" />
         </columns>
       </TableView>

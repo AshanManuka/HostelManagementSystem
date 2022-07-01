@@ -2,9 +2,11 @@ package lk.ijse.HostelManagementSystem.dao.custom.impl;
 
 import lk.ijse.HostelManagementSystem.dao.custom.ReservationDao;
 import lk.ijse.HostelManagementSystem.entity.Reservation;
+import lk.ijse.HostelManagementSystem.entity.Room;
 import lk.ijse.HostelManagementSystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +35,14 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        Query query = session.createQuery("FROM Reservation");
+        List<Reservation> list = query.list();
+        transaction.commit();
+        session.close();
+
+        return list;
     }
 
     @Override

@@ -8,13 +8,14 @@ import lk.ijse.HostelManagementSystem.entity.Reservation;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReservationBoImpl implements ReservationBo {
     ReservationDaoImpl reservationDaoImpl = (ReservationDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.RESERVATION);
 
     @Override
-    public ArrayList<Reservation> getAllReservation() throws SQLException, ClassNotFoundException {
-        return null;
+    public List<Reservation> getAllReservation() throws SQLException, ClassNotFoundException {
+        return reservationDaoImpl.getAll();
     }
 
     @Override
