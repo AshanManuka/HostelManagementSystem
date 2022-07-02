@@ -35,11 +35,6 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
-    public boolean updateQty(int qty) throws Exception {
-        return roomDaoImpl.updateQty(qty);
-    }
-
-    @Override
     public String generateNewId() throws Exception {
         return roomDaoImpl.generateNewID();
     }
@@ -50,8 +45,18 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
-    public int searchRoomQty(String code) throws Exception {
-        return roomDaoImpl.searchRoomQty(code);
+    public Room searchType(String code) throws Exception {
+        return roomDaoImpl.searchType(code);
+    }
+
+    @Override
+    public int searchRoomQty(String code,String name) throws Exception {
+        return roomDaoImpl.searchRoomQty(code,name);
+    }
+
+    @Override
+    public int searchRoomQtyDel(String code, String name) throws Exception {
+        return roomDaoImpl.searchRoomQtyDel(code,name);
     }
 
     @Override

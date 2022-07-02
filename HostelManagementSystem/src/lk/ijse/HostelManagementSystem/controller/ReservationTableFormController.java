@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.HostelManagementSystem.bo.BOFactory;
 import lk.ijse.HostelManagementSystem.bo.custom.impl.ReservationBoImpl;
+import lk.ijse.HostelManagementSystem.bo.custom.impl.RoomBoImpl;
 import lk.ijse.HostelManagementSystem.dto.ReservationDto;
 import lk.ijse.HostelManagementSystem.entity.Reservation;
 import lk.ijse.HostelManagementSystem.entity.Room;
@@ -45,6 +46,8 @@ public class ReservationTableFormController implements Initializable {
     public TableColumn date;
     String selectedSId;
     ReservationBoImpl reservationBo = (ReservationBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RESERVATION);
+    RoomBoImpl roomBoImpl = (RoomBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ROOM);
+
 
     @SneakyThrows
     @Override
@@ -61,6 +64,7 @@ public class ReservationTableFormController implements Initializable {
         resTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
                if (newValue != null) {
+                selectedSId = newValue.getRoomTypeId();
                 String s = newValue.getResId();
                 selectedLbl.setText(s);
                }
@@ -94,6 +98,11 @@ public class ReservationTableFormController implements Initializable {
 
     public void deleteRes(ActionEvent actionEvent) throws Exception {
         boolean b = reservationBo.deleteReservation(selectedLbl.getText());
+        Room room = roomBoImpl.searchType(selectedSId);
+        int newQty = roomBoImpl.searchRoomQtyDel(selectedSId,"increase");
+        Room room2 = new Room(room.getRoomId(),selectedSId,room.getKeyMoney(),newQty);
+        boolean c = roomBoImpl.updateRoom(room2);
+
     }
 
 }

@@ -162,11 +162,11 @@ public class ReservationFormController implements Initializable {
     }
 
     private void manageRoom() throws Exception {
-         int q = roomBoImpl.searchRoomQty(selRoomId);
+         int q = roomBoImpl.searchRoomQty(selRoomId,"decrease");
         Room room = new Room(selRoomId,roomType.getText(),keyMoney.getText(),q);
          boolean b = roomBoImpl.updateRoom(room);
         System.out.println("returned qty "+q);
-        System.out.println("selected id = "+selRoomId);
+
     }
 
     private String today() {

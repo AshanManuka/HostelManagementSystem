@@ -17,6 +17,7 @@ import java.util.List;
 public class RoomDaoImpl implements RoomDao {
     private Session session;
     private Transaction transaction;
+    int qq;
 
 
     @Override
@@ -140,23 +141,62 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public int searchRoomQty(String code) throws Exception {
+    public int searchRoomQty(String code,String name) throws Exception {
+            int qt;
+            session = FactoryConfiguration.getInstance().getSession();
+            transaction = session.beginTransaction();
+            String hql = "FROM Room WHERE roomId =:room_id";
+            Query query = session.createQuery(hql);
+            query.setParameter("room_id", code);
+            List<Room> roomList = query.list();
+
+            for (Room room : roomList) {
+                qt = room.getQty();
+                int newQty = qt - 1;
+                return newQty;
+            }
+            transaction.commit();
+            session.close();
+    return 0;
+    }
+
+    @Override
+    public int searchRoomQtyDel(String code, String name) throws Exception {
         int qt;
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
-        String hql = "FROM Room WHERE roomId =:room_id";
+        String hql = "FROM Room WHERE roomType =:room_type";
         Query query = session.createQuery(hql);
-        query.setParameter("room_id",code);
+        query.setParameter("room_type", code);
         List<Room> roomList = query.list();
 
-        for (Room room: roomList) {
+        for (Room room : roomList) {
             qt = room.getQty();
-            int newQty = qt - 1;
+            int newQty = qt + 1;
             return newQty;
-           }
-
+        }
         transaction.commit();
         session.close();
         return 0;
+    }
+
+    @Override
+    public Room searchType(String code) throws Exception {
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+
+        String hql = "FROM Room WHERE roomType =:room_type";
+        Query query = session.createQuery(hql);
+        query.setParameter("room_type",code);
+        List<Room> roomList = query.list();
+
+        for (Room room: roomList) {
+            return room;
+        }
+
+        transaction.commit();
+        session.close();
+
+        return null;
     }
 }
