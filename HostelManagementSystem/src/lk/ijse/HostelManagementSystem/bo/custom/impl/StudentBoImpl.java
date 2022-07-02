@@ -17,42 +17,42 @@ public class StudentBoImpl implements StudentBo{
     StudentDaoImpl studentDaoImpl = (StudentDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.STUDENT);
 
     @Override
-    public ArrayList<StudentDto> getAllStudent() throws SQLException, ClassNotFoundException {
+    public ArrayList<StudentDto> getAllStudent() throws Exception {
         return null;
     }
 
     @Override
-    public boolean deleteStudent(String code) throws SQLException, ClassNotFoundException {
+    public boolean deleteStudent(String code) throws Exception {
         return studentDaoImpl.delete(code);
     }
 
     @Override
-    public boolean saveStudent(Student dto) throws SQLException, ClassNotFoundException {
+    public boolean saveStudent(Student dto) throws Exception {
         return studentDaoImpl.save(dto);
     }
 
     @Override
-    public boolean updateStudent(Student dto) throws SQLException, ClassNotFoundException {
+    public boolean updateStudent(Student dto) throws Exception {
         return studentDaoImpl.update(dto);
     }
 
     @Override
-    public boolean existsStudent(String code) throws SQLException, ClassNotFoundException {
+    public boolean existsStudent(String code) throws Exception {
         return false;
     }
 
     @Override
-    public Student searchStudent(String code) throws SQLException, ClassNotFoundException {
+    public Student searchStudent(String code) throws Exception {
         return studentDaoImpl.search(code);
     }
 
     @Override
-    public String generateNewStudentId() throws SQLException, ClassNotFoundException {
+    public String generateNewStudentId() throws Exception {
         return studentDaoImpl.generateNewID();
     }
 
     @Override
-    public ArrayList<String> searchStudentCode() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchStudentCode() throws Exception {
         return studentDaoImpl.searchId();
     }
 }

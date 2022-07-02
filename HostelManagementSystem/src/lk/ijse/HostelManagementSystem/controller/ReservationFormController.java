@@ -71,14 +71,18 @@ public class ReservationFormController implements Initializable {
     String gender;
     String status;
 
-    @SneakyThrows
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         String sId = generateStudentId();
         studentId.setText(sId);
 
-        loadAllId();
+        try {
+            loadAllId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         roomIdBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             String nwValue = (String) newValue;
@@ -90,12 +94,14 @@ public class ReservationFormController implements Initializable {
                 roomId.setText(newResId);
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
 
     }
 
-    private String generateRoomId() throws SQLException, ClassNotFoundException {
+    private String generateRoomId() throws Exception {
         String rId =reservationBo.generateNewId();
         if (rId != null) {
             int newId = Integer.parseInt(rId.replace("RES-", "")) + 1;
@@ -105,13 +111,14 @@ public class ReservationFormController implements Initializable {
         }
     }
 
-    private void loadAllId() throws SQLException, ClassNotFoundException {
+    private void loadAllId() throws Exception {
         ArrayList<String> room = roomBoImpl.searchRoomCode();
         ObservableList oList= FXCollections.observableArrayList(room);
         roomIdBox.setItems(oList);
     }
 
-    private String generateStudentId() throws SQLException, ClassNotFoundException {
+    @SneakyThrows
+    private String generateStudentId() {
         String stId = studentBoImpl.generateNewStudentId();
         if (stId != null) {
             int newId = Integer.parseInt(stId.replace("S00-", "")) + 1;
@@ -122,11 +129,11 @@ public class ReservationFormController implements Initializable {
     }
 
 
-    public void comfirmReservation(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void comfirmReservation(ActionEvent actionEvent) throws Exception {
         addStudent();
     }
 
-    private void addStudent() throws SQLException, ClassNotFoundException {
+    private void addStudent() throws Exception {
         String sId = studentId.getText();
         String sName = studentName.getText();
         String sAddress = studentAddress.getText();
@@ -138,7 +145,7 @@ public class ReservationFormController implements Initializable {
         selectRoom(sId);
     }
 
-    private void selectRoom(String sId) throws SQLException, ClassNotFoundException {
+    private void selectRoom(String sId) throws Exception {
      String resId = roomId.getText();
      String roomT = roomType.getText();
      String resDate = today();
@@ -152,7 +159,7 @@ public class ReservationFormController implements Initializable {
      manageRoom();
     }
 
-    private void manageRoom() throws SQLException, ClassNotFoundException {
+    private void manageRoom() throws Exception {
         String selectedRoom = roomType.getText();
 
         boolean d = roomBoImpl.updateQty(selectedRoom);

@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class StudentDaoImpl implements StudentDao {
     private Transaction transaction;
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewID() throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -37,12 +38,12 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> getAll() throws SQLException, ClassNotFoundException {
+    public List<Student> getAll() throws Exception {
         return null;
     }
 
     @Override
-    public boolean save(Student dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Student dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.save(dto);
@@ -53,7 +54,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchId() throws Exception {
         ArrayList<String> idList = new ArrayList<>();
 
         session = FactoryConfiguration.getInstance().getSession();
@@ -73,7 +74,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student search(String s) throws SQLException, ClassNotFoundException {
+    public Student search(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -93,7 +94,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public boolean update(Student dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Student dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.update(dto);
@@ -104,7 +105,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         Student student = session.load(Student.class,s);

@@ -56,19 +56,17 @@ public class ManageStudentFormController implements Initializable {
         loadAllId();
 
         studentIdBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            String nwValue = (String) newValue;
+            String nwValue = String.valueOf(newValue);
             studentId.setText(nwValue);
-
-
             try {
-                Student student = studentBoImpl.searchStudent(nwValue);
+                Student student = studentBoImpl.searchStudent(String.valueOf(newValue));
                 studentName.setText(student.getStudentName());
                 studentAddress.setText(student.getStudentAddress());
                 studentContact.setText(String.valueOf(student.getContact()));
                 dobField.setText(student.getDob());
                 genderField.setText(student.getGender());
 
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -76,7 +74,7 @@ public class ManageStudentFormController implements Initializable {
 
     }
 
-    private void loadAllId() throws SQLException, ClassNotFoundException {
+    private void loadAllId() throws Exception {
         ArrayList<String> student = studentBoImpl.searchStudentCode();
         ObservableList oList= FXCollections.observableArrayList(student);
         studentIdBox.setItems(oList);
@@ -94,7 +92,7 @@ public class ManageStudentFormController implements Initializable {
     }
 
 
-    public void updateStudent(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void updateStudent(ActionEvent actionEvent) throws Exception {
         String sId = studentId.getText();
         String sName = studentName.getText();
         String sAddress = studentAddress.getText();
@@ -104,7 +102,7 @@ public class ManageStudentFormController implements Initializable {
         boolean b = studentBoImpl.updateStudent(new Student(sId,sName,sAddress,Integer.parseInt(sContact),sDob,gender));
     }
 
-    public void deleteStudent(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void deleteStudent(ActionEvent actionEvent) throws Exception {
         String sId = studentId.getText();
         boolean d = studentBoImpl.deleteStudent(sId);
     }

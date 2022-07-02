@@ -28,7 +28,7 @@ public class HomeFormController {
 
 
     //Check database & do login
-    public void userLogin(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+    public void userLogin(ActionEvent actionEvent) throws Exception {
 
         String uNameId = userBoImpl.checkUserName(userName.getText());
         String passwordId = userBoImpl.checkPassword(password.getText());
@@ -72,7 +72,7 @@ public class HomeFormController {
         System.out.println("Cancel function");
     }
 
-    public void searchUser(String id) throws SQLException, ClassNotFoundException {
+    public void searchUser(String id) throws Exception {
         String name = userBoImpl.searchUser(id);
         DashboardFormController.sName = name;
 

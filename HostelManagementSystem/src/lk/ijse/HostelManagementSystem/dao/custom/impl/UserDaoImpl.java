@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewID() throws Exception {
 
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
@@ -39,12 +39,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAll() throws SQLException, ClassNotFoundException {
+    public List<User> getAll() throws Exception {
         return null;
     }
 
     @Override
-    public boolean save(User dto) throws SQLException, ClassNotFoundException {
+    public boolean save(User dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.save(dto);
@@ -55,12 +55,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchId() throws Exception {
         return null;
     }
 
     @Override
-    public User search(String s) throws SQLException, ClassNotFoundException {
+    public User search(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         User user = session.load(User.class,s);
@@ -71,7 +71,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean update(User dto) throws SQLException, ClassNotFoundException {
+    public boolean update(User dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.update(dto);
@@ -82,7 +82,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         User user = session.load(User.class,s);
@@ -93,7 +93,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String checkUserName(String code) throws SQLException, ClassNotFoundException {
+    public String checkUserName(String code) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -113,7 +113,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String checkPassword(String code) throws SQLException, ClassNotFoundException {
+    public String checkPassword(String code) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -133,7 +133,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String searchName(String code) throws SQLException, ClassNotFoundException {
+    public String searchName(String code) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 

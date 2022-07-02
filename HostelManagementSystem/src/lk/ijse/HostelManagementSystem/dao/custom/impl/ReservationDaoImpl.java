@@ -18,7 +18,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewID() throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -34,7 +34,7 @@ public class ReservationDaoImpl implements ReservationDao {
     }
 
     @Override
-    public List<Reservation> getAll() throws SQLException, ClassNotFoundException {
+    public List<Reservation> getAll() throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         Query query = session.createQuery("FROM Reservation");
@@ -46,7 +46,7 @@ public class ReservationDaoImpl implements ReservationDao {
     }
 
     @Override
-    public boolean save(Reservation dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Reservation dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.save(dto);
@@ -57,22 +57,22 @@ public class ReservationDaoImpl implements ReservationDao {
     }
 
     @Override
-    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchId() throws Exception {
         return null;
     }
 
     @Override
-    public Reservation search(String s) throws SQLException, ClassNotFoundException {
+    public Reservation search(String s) throws Exception {
         return null;
     }
 
     @Override
-    public boolean update(Reservation dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Reservation dto) throws Exception {
         return false;
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         Reservation res = session.load(Reservation.class,s);

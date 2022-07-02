@@ -6,18 +6,18 @@ import java.util.List;
 
 public interface CrudDao<T,ID> extends SuperDao {
 
-    String generateNewID() throws SQLException, ClassNotFoundException;
+    String generateNewID() throws Exception;
 
-    List<T> getAll() throws SQLException, ClassNotFoundException;
+    List<T> getAll() throws Exception;
 
-    boolean save(T dto) throws SQLException, ClassNotFoundException;
+    boolean save(T dto) throws Exception;
 
-    ArrayList<String> searchId()throws SQLException,ClassNotFoundException;
+    ArrayList<String> searchId()throws Exception;
 
-    T search(ID id)throws SQLException,ClassNotFoundException;
+    T search(ID id)throws Exception;
 
-    boolean update(T dto) throws SQLException, ClassNotFoundException;
+    boolean update(T dto) throws Exception;
 
-    boolean delete(ID id) throws SQLException, ClassNotFoundException;
+    boolean delete(ID id) throws Exception;
 
 }

@@ -65,7 +65,7 @@ public class ManageRoomFormController implements Initializable {
                 qty.setText(String.valueOf(room.getQty()));
 
 
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -74,7 +74,7 @@ public class ManageRoomFormController implements Initializable {
 
     }
 
-    private void loadAllId() throws SQLException, ClassNotFoundException {
+    private void loadAllId() throws Exception {
         ArrayList<String> room = roomBoImpl.searchRoomCode();
         ObservableList oList= FXCollections.observableArrayList(room);
         roomIdBox.setItems(oList);
@@ -93,17 +93,17 @@ public class ManageRoomFormController implements Initializable {
     }
 
     
-    public void addRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void addRoom(ActionEvent actionEvent) throws Exception {
        String methName = "add";
        addAndUpdate(methName);
     }
 
-    public void updateRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void updateRoom(ActionEvent actionEvent) throws Exception {
         String methName = "update";
         addAndUpdate(methName);
     }
 
-    public void deleteRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void deleteRoom(ActionEvent actionEvent) throws Exception {
         String rId = roomId.getText();
         boolean ok = roomBoImpl.deleteRoom(rId);
         if (ok){
@@ -112,7 +112,7 @@ public class ManageRoomFormController implements Initializable {
     }
 
 
-    public void addAndUpdate(String methName) throws SQLException, ClassNotFoundException {
+    public void addAndUpdate(String methName) throws Exception {
 
         String roomTypeId = roomId.getText();
         String rType = roomType.getText();

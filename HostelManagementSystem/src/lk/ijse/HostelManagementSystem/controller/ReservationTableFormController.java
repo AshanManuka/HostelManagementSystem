@@ -67,7 +67,7 @@ public class ReservationTableFormController implements Initializable {
         });
 }
 
-    private void loadReservations() throws SQLException, ClassNotFoundException {
+    private void loadReservations() throws Exception {
         List<Reservation> reservationList = reservationBo.getAllReservation();
         ObservableList<Reservation> list = FXCollections.observableArrayList();
         list.addAll(reservationList);
@@ -92,7 +92,7 @@ public class ReservationTableFormController implements Initializable {
         context.getChildren().add(parent);
     }
 
-    public void deleteRes(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void deleteRes(ActionEvent actionEvent) throws Exception {
         boolean b = reservationBo.deleteReservation(selectedLbl.getText());
     }
 

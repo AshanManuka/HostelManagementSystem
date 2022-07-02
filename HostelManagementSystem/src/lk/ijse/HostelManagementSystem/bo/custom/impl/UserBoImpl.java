@@ -18,53 +18,53 @@ public class UserBoImpl implements UserBo {
     UserDaoImpl userDaoImpl = (UserDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.USER);
 
     @Override
-    public ArrayList<User> getAllUser() throws SQLException, ClassNotFoundException {
+    public ArrayList<User> getAllUser() throws Exception {
         return null;
     }
 
     @Override
-    public boolean deleteUser(String code) throws SQLException, ClassNotFoundException {
+    public boolean deleteUser(String code) throws Exception {
         return userDaoImpl.delete(code);
     }
 
     @Override
-    public boolean saveUser(User dto) throws SQLException, ClassNotFoundException {
+    public boolean saveUser(User dto) throws Exception {
         return userDaoImpl.save(dto);
     }
 
     @Override
-    public boolean updateUser(User dto) throws SQLException, ClassNotFoundException {
+    public boolean updateUser(User dto) throws Exception {
         return userDaoImpl.update(dto);
     }
 
     @Override
-    public String checkUserName(String code) throws SQLException, ClassNotFoundException {
+    public String checkUserName(String code) throws Exception {
         return userDaoImpl.checkUserName(code);
     }
 
     @Override
-    public String checkPassword(String code) throws SQLException, ClassNotFoundException {
+    public String checkPassword(String code) throws Exception {
         return userDaoImpl.checkPassword(code);
     }
 
 
     @Override
-    public String searchUser(String code) throws SQLException, ClassNotFoundException {
+    public String searchUser(String code) throws Exception {
         return userDaoImpl.searchName(code);
     }
 
     @Override
-    public User search(String code) throws SQLException, ClassNotFoundException {
+    public User search(String code) throws Exception {
         return userDaoImpl.search(code);
     }
 
     @Override
-    public String generateNewUserId() throws SQLException, ClassNotFoundException {
+    public String generateNewUserId() throws Exception {
         return userDaoImpl.generateNewID();
     }
 
     @Override
-    public ArrayList<String> searchUserCode() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchUserCode() throws Exception {
         return null;
     }
 }

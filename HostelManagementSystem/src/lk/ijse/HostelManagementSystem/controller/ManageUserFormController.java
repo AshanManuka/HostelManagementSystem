@@ -58,7 +58,7 @@ public class ManageUserFormController implements Initializable {
         userId.setText(newId);
     }
 
-    private String generateNewId() throws SQLException, ClassNotFoundException {
+    private String generateNewId() throws Exception {
     String lastId = userBoImpl.generateNewUserId();
         if (lastId != null) {
             int newId = Integer.parseInt(lastId.replace("U00-", "")) + 1;
@@ -80,7 +80,7 @@ public class ManageUserFormController implements Initializable {
     }
 
 
-    public void updateUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void updateUser(ActionEvent actionEvent) throws Exception {
         String p1 = uPassword.getText();
         String p2 = comfirmPassword.getText();
 
@@ -92,7 +92,7 @@ public class ManageUserFormController implements Initializable {
         }
     }
 
-    private void addAndUpdate(String s) throws SQLException, ClassNotFoundException {
+    private void addAndUpdate(String s) throws Exception {
         String uId = userId.getText();
         String Name = userName.getText();
         String uAddress = userAddress.getText();
@@ -110,12 +110,12 @@ public class ManageUserFormController implements Initializable {
 
     }
 
-    public void deleteUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void deleteUser(ActionEvent actionEvent) throws Exception {
         String uId = userId.getText();
         boolean deleted = userBoImpl.deleteUser(uId);
     }
 
-    public void addRoom(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void addRoom(ActionEvent actionEvent) throws Exception {
         String s = "add";
         addAndUpdate(s);
     }
@@ -131,7 +131,7 @@ public class ManageUserFormController implements Initializable {
 
     }
 
-    public void searchUser(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void searchUser(ActionEvent actionEvent) throws Exception {
         userId.clear();
         User user = userBoImpl.search(loginUserId);
         if (user != null){

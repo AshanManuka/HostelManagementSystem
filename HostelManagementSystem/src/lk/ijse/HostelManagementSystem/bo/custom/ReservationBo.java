@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ReservationBo extends SuperBo {
-    List<Reservation> getAllReservation() throws SQLException, ClassNotFoundException;
+    List<Reservation> getAllReservation() throws Exception;
 
-    boolean deleteReservation(String code) throws SQLException, ClassNotFoundException;
+    boolean deleteReservation(String code) throws Exception;
 
-    boolean saveReservation(Reservation dto) throws SQLException, ClassNotFoundException;
+    boolean saveReservation(Reservation dto) throws Exception;
 
-    String generateNewId() throws SQLException, ClassNotFoundException;
+    String generateNewId() throws Exception;
 
 }

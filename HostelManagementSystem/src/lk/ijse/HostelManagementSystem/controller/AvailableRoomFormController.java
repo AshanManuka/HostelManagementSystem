@@ -49,6 +49,8 @@ public class AvailableRoomFormController implements Initializable {
             loadEmptyRooms();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -72,7 +74,7 @@ public class AvailableRoomFormController implements Initializable {
     }
 
 
-    public void loadEmptyRooms() throws SQLException, ClassNotFoundException {
+    public void loadEmptyRooms() throws Exception {
         List<Room> roomList = roomBoImpl.getAllRoom();
         ObservableList<Room> list = FXCollections.observableArrayList();
         list.addAll(roomList);

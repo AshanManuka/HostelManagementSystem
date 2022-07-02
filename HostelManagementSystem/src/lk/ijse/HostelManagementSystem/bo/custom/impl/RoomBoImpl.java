@@ -15,42 +15,42 @@ public class RoomBoImpl implements RoomBo {
     RoomDaoImpl roomDaoImpl = (RoomDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.ROOM);
 
     @Override
-    public List<Room> getAllRoom() throws SQLException, ClassNotFoundException {
+    public List<Room> getAllRoom() throws Exception {
         return roomDaoImpl.getAll();
     }
 
     @Override
-    public boolean deleteRoom(String code) throws SQLException, ClassNotFoundException {
+    public boolean deleteRoom(String code) throws Exception {
         return roomDaoImpl.delete(code);
     }
 
     @Override
-    public boolean saveRoom(Room dto) throws SQLException, ClassNotFoundException {
+    public boolean saveRoom(Room dto) throws Exception {
         return roomDaoImpl.save(dto);
     }
 
     @Override
-    public boolean updateRoom(Room dto) throws SQLException, ClassNotFoundException {
+    public boolean updateRoom(Room dto) throws Exception {
         return roomDaoImpl.update(dto);
     }
 
     @Override
-    public boolean updateQty(String code) throws SQLException, ClassNotFoundException {
+    public boolean updateQty(String code) throws Exception {
         return roomDaoImpl.updateQty(code);
     }
 
     @Override
-    public String generateNewId() throws SQLException, ClassNotFoundException {
+    public String generateNewId() throws Exception {
         return roomDaoImpl.generateNewID();
     }
 
     @Override
-    public Room searchRoom(String code) throws SQLException, ClassNotFoundException {
+    public Room searchRoom(String code) throws Exception {
         return roomDaoImpl.search(code);
     }
 
     @Override
-    public ArrayList<String> searchRoomCode() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchRoomCode() throws Exception {
         return roomDaoImpl.searchId();
     }
 }

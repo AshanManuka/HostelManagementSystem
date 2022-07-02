@@ -14,22 +14,22 @@ public class ReservationBoImpl implements ReservationBo {
     ReservationDaoImpl reservationDaoImpl = (ReservationDaoImpl) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.RESERVATION);
 
     @Override
-    public List<Reservation> getAllReservation() throws SQLException, ClassNotFoundException {
+    public List<Reservation> getAllReservation() throws Exception {
         return reservationDaoImpl.getAll();
     }
 
     @Override
-    public boolean deleteReservation(String code) throws SQLException, ClassNotFoundException {
+    public boolean deleteReservation(String code) throws Exception {
         return reservationDaoImpl.delete(code);
     }
 
     @Override
-    public boolean saveReservation(Reservation dto) throws SQLException, ClassNotFoundException {
+    public boolean saveReservation(Reservation dto) throws Exception {
         return reservationDaoImpl.save(dto);
     }
 
     @Override
-    public String generateNewId() throws SQLException, ClassNotFoundException {
+    public String generateNewId() throws Exception {
         return reservationDaoImpl.generateNewID();
     }
 }

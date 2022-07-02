@@ -20,12 +20,12 @@ public class RoomDaoImpl implements RoomDao {
 
 
     @Override
-    public String generateNewID() throws SQLException, ClassNotFoundException {
+    public String generateNewID() throws Exception {
         return null;
     }
 
     @Override
-    public List<Room> getAll() throws SQLException, ClassNotFoundException {
+    public List<Room> getAll() throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         Query query = session.createQuery("FROM Room");
@@ -37,7 +37,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean save(Room dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Room dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.save(dto);
@@ -49,7 +49,7 @@ public class RoomDaoImpl implements RoomDao {
 
 
     @Override
-    public ArrayList<String> searchId() throws SQLException, ClassNotFoundException {
+    public ArrayList<String> searchId() throws Exception {
 
         ArrayList<String> idList = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public Room search(String s) throws SQLException, ClassNotFoundException {
+    public Room search(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
 
@@ -90,7 +90,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean update(Room dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Room dto) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         session.update(dto);
@@ -101,7 +101,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
         Room room = session.load(Room.class,s);
@@ -112,7 +112,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean updateQty(String code) throws SQLException, ClassNotFoundException {
+    public boolean updateQty(String code) throws Exception {
         int qt;
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
