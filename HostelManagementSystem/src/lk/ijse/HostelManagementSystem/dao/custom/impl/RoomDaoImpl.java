@@ -112,13 +112,13 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public boolean updateQty(String code) throws Exception {
-        int qt;
+    public boolean updateQty(int qty) throws Exception {
+     /*   int qt;
         session = FactoryConfiguration.getInstance().getSession();
         transaction = session.beginTransaction();
-        String hql = "FROM Room WHERE roomType =:room_type";
+        String hql = "FROM Room WHERE roomId =:room_id";
         Query query = session.createQuery(hql);
-        query.setParameter("room_type",code);
+        query.setParameter("room_id",qty);
         List<Room> roomList = query.list();
 
         for (Room room: roomList) {
@@ -127,17 +127,36 @@ public class RoomDaoImpl implements RoomDao {
             System.out.println(qt);
             System.out.println(newQty);
 
-            Query q=session.createQuery("update Room set qty=:n where roomType=:i");
-            q.setParameter("n",newQty);
-            q.setParameter("i",code);
+           *//* String qryString2 = "update Room r set r.qty=? where r.roomId=?";
+            Query query2 = session.createQuery(qryString2);
+            query2.setParameter(newQty, code);*//*
+
         }
-
-
-
-
 
         transaction.commit();
         session.close();
+        return true;*/
         return true;
+    }
+
+    @Override
+    public int searchRoomQty(String code) throws Exception {
+        int qt;
+        session = FactoryConfiguration.getInstance().getSession();
+        transaction = session.beginTransaction();
+        String hql = "FROM Room WHERE roomId =:room_id";
+        Query query = session.createQuery(hql);
+        query.setParameter("room_id",code);
+        List<Room> roomList = query.list();
+
+        for (Room room: roomList) {
+            qt = room.getQty();
+            int newQty = qt - 1;
+            return newQty;
+           }
+
+        transaction.commit();
+        session.close();
+        return 0;
     }
 }

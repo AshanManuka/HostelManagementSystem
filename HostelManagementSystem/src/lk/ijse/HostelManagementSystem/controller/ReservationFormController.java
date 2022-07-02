@@ -70,6 +70,7 @@ public class ReservationFormController implements Initializable {
     ReservationBoImpl reservationBo = (ReservationBoImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RESERVATION);
     String gender;
     String status;
+    String selRoomId;
 
 
     @Override
@@ -86,6 +87,7 @@ public class ReservationFormController implements Initializable {
 
         roomIdBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             String nwValue = (String) newValue;
+            selRoomId = nwValue;
             try {
                 Room room = roomBoImpl.searchRoom(nwValue);
                 roomType.setText(room.getRoomType());
@@ -160,9 +162,11 @@ public class ReservationFormController implements Initializable {
     }
 
     private void manageRoom() throws Exception {
-        String selectedRoom = roomType.getText();
-
-        boolean d = roomBoImpl.updateQty(selectedRoom);
+         int q = roomBoImpl.searchRoomQty(selRoomId);
+        Room room = new Room(selRoomId,roomType.getText(),keyMoney.getText(),q);
+         boolean b = roomBoImpl.updateRoom(room);
+        System.out.println("returned qty "+q);
+        System.out.println("selected id = "+selRoomId);
     }
 
     private String today() {

@@ -35,8 +35,8 @@ public class RoomBoImpl implements RoomBo {
     }
 
     @Override
-    public boolean updateQty(String code) throws Exception {
-        return roomDaoImpl.updateQty(code);
+    public boolean updateQty(int qty) throws Exception {
+        return roomDaoImpl.updateQty(qty);
     }
 
     @Override
@@ -47,6 +47,11 @@ public class RoomBoImpl implements RoomBo {
     @Override
     public Room searchRoom(String code) throws Exception {
         return roomDaoImpl.search(code);
+    }
+
+    @Override
+    public int searchRoomQty(String code) throws Exception {
+        return roomDaoImpl.searchRoomQty(code);
     }
 
     @Override

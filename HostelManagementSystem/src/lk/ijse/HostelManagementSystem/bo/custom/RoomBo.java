@@ -18,11 +18,13 @@ public interface RoomBo extends SuperBo {
 
     boolean updateRoom(Room dto) throws Exception;
 
-    boolean updateQty(String code) throws Exception;
+    boolean updateQty(int qty) throws Exception;
 
     String generateNewId() throws Exception;
 
     Room searchRoom(String code) throws Exception;
+
+    int searchRoomQty(String code) throws Exception;
 
     ArrayList<String> searchRoomCode() throws Exception;
 }
