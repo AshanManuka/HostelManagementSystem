@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -71,6 +73,7 @@ public class ReservationFormController implements Initializable {
     String gender;
     String status;
     String selRoomId;
+    int i = 0;
 
 
     @Override
@@ -163,7 +166,7 @@ public class ReservationFormController implements Initializable {
 
     private void manageRoom() throws Exception {
          int q = roomBoImpl.searchRoomQty(selRoomId,"decrease");
-        Room room = new Room(selRoomId,roomType.getText(),keyMoney.getText(),q);
+         Room room = new Room(selRoomId,roomType.getText(),keyMoney.getText(),q);
          boolean b = roomBoImpl.updateRoom(room);
         System.out.println("returned qty "+q);
 
@@ -189,11 +192,11 @@ public class ReservationFormController implements Initializable {
 
     public void payAction(ActionEvent actionEvent) {
         if (payNow.isSelected()){
-            status = "Key Money is Done";
+            status = "Paid";
             payLater.setSelected(false);
         }
         if (payLater.isSelected()){
-            status = "Key Money is not Payed";
+            status = "Not Paid";
             payNow.setSelected(false);
         }
     }
@@ -223,4 +226,17 @@ public class ReservationFormController implements Initializable {
         context.getChildren().add(parent);
     }
 
+    public void keyRelease(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER){
+            i++;
+            if (i == 1){
+                studentName.requestFocus();
+            }if (i == 2){
+                studentAddress.requestFocus();
+            }if(i == 3){
+                studentContact.requestFocus();
+            }
+        }
+
+    }
 }

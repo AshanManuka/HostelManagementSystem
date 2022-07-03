@@ -36,7 +36,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="userId" focusColor="#061540" layoutX="239.0" layoutY="98.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="userId" focusColor="#061540" layoutX="239.0" layoutY="98.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -56,7 +56,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="userName" focusColor="#061540" layoutX="239.0" layoutY="150.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="userName" focusColor="#061540" layoutX="239.0" layoutY="150.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -66,7 +66,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="userAddress" focusColor="#061540" layoutX="239.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="userAddress" focusColor="#061540" layoutX="239.0" layoutY="200.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -76,7 +76,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="userContact" focusColor="#061540" layoutX="240.0" layoutY="247.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="userContact" focusColor="#061540" layoutX="240.0" layoutY="247.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -86,7 +86,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="uName" focusColor="#061540" layoutX="222.0" layoutY="327.0" prefHeight="31.0" prefWidth="205.0" unFocusColor="#070632">
+      <JFXTextField fx:id="uName" focusColor="#061540" layoutX="222.0" layoutY="327.0" onKeyReleased="#keyRelease" prefHeight="31.0" prefWidth="205.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -101,8 +101,8 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXPasswordField fx:id="uPassword" layoutX="224.0" layoutY="379.0" prefHeight="25.0" prefWidth="204.0" />
-      <JFXPasswordField fx:id="comfirmPassword" layoutX="224.0" layoutY="428.0" prefHeight="25.0" prefWidth="204.0" />
+      <JFXPasswordField fx:id="uPassword" layoutX="224.0" layoutY="379.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="204.0" />
+      <JFXPasswordField fx:id="comfirmPassword" layoutX="224.0" layoutY="428.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="204.0" />
       <Separator layoutX="80.0" layoutY="311.0" prefHeight="4.0" prefWidth="373.0" />
       <JFXButton fx:id="add" layoutX="598.0" layoutY="242.0" onAction="#addRoom" prefHeight="65.0" prefWidth="270.0" style="-fx-background-color: #0a3d62" text="Add User" textFill="WHITE">
          <font>

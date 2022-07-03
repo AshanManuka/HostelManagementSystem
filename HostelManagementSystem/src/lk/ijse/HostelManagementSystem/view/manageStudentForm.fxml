@@ -39,7 +39,7 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="studentId" focusColor="#061540" layoutX="214.0" layoutY="134.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="studentId" focusColor="#061540" layoutX="214.0" layoutY="134.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
@@ -69,27 +69,27 @@
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="studentName" focusColor="#061540" layoutX="214.0" layoutY="186.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="studentName" focusColor="#061540" layoutX="214.0" layoutY="186.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="studentAddress" focusColor="#061540" layoutX="213.0" layoutY="238.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="studentAddress" focusColor="#061540" layoutX="213.0" layoutY="238.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="studentContact" focusColor="#061540" layoutX="214.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="studentContact" focusColor="#061540" layoutX="214.0" layoutY="292.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="590.0" layoutY="227.0" onAction="#updateStudent" prefHeight="70.0" prefWidth="270.0" style="-fx-background-color: #20bf6b" text="Update Student" textFill="WHITE">
+      <JFXButton fx:id="updateBtn" layoutX="590.0" layoutY="227.0" onAction="#updateStudent" prefHeight="70.0" prefWidth="270.0" style="-fx-background-color: #20bf6b" text="Update Student" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="591.0" layoutY="322.0" onAction="#deleteStudent" prefHeight="70.0" prefWidth="270.0" style="-fx-background-color: darkred" text="Delete Student" textFill="WHITE">
+      <JFXButton fx:id="deleteBtn" layoutX="591.0" layoutY="322.0" onAction="#deleteStudent" prefHeight="70.0" prefWidth="270.0" style="-fx-background-color: darkred" text="Delete Student" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -99,12 +99,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="dobField" focusColor="#061540" layoutX="214.0" layoutY="350.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="dobField" focusColor="#061540" layoutX="214.0" layoutY="350.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="genderField" focusColor="#061540" layoutX="214.0" layoutY="420.0" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
+      <JFXTextField fx:id="genderField" focusColor="#061540" layoutX="214.0" layoutY="420.0" onKeyReleased="#keyRelease" prefHeight="25.0" prefWidth="174.0" unFocusColor="#070632">
          <font>
             <Font size="15.0" />
          </font>
